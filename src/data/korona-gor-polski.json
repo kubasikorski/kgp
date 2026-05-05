@@ -33,7 +33,14 @@
     "range": "Masyw Śnieżnika",
     "coords": [50.2075121, 16.8473628],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "poi": [
+      {
+        "type": "parking",
+        "coords": [50.2200106, 16.7898672],
+        "description": "Idealne miejsce wypadowe na szlak na Śnieżnik. Jest tu wystarczająco dużo miejsca do bezpłatnego parkowania. Dostępny jest tutaj schron i kilka stołów. Można tu również przenocować w samochodzie lub przyczepie kempingowej."
+      }
+    ]
   },
   {
     "name": "Tarnica",
@@ -112,7 +119,7 @@
     "slug": "wysoka",
     "elevation": 1050,
     "range": "Pieniny",
-    "coords": [49.3806821,20.5555269],
+    "coords": [49.3806821, 20.5555269],
     "conquered": false,
     "conqueredAt": null
   },
