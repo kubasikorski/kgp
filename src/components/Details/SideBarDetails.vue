@@ -54,6 +54,10 @@ const cancelPicking = () => {
 
 <template>
   <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
+    <div class="mb-4 pb-4" v-if="peak.description">
+      <p class="text-slate-800">{{ peak.description }} m</p>
+    </div>
+
     <dl class="mt-3 space-y-1 text-sm">
       <div class="flex justify-between pb-4">
         <dt class="text-slate-500">Status</dt>
@@ -149,7 +153,24 @@ const cancelPicking = () => {
           "
           @click="emit('select-gpx', selectedGpx?.url === file.url ? null : file)"
         >
-          {{ file.name }}
+          <p>{{ file.name }}</p>
+          <dl
+            v-if="file.trailDist != null || file.trailTime || file.difficulty != null"
+            class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500"
+          >
+            <div v-if="file.trailDist != null" class="flex gap-1">
+              <dt>Dystans:</dt>
+              <dd class="text-slate-700">{{ file.trailDist }} km</dd>
+            </div>
+            <div v-if="file.trailTime" class="flex gap-1">
+              <dt>Czas:</dt>
+              <dd class="text-slate-700">{{ file.trailTime }}</dd>
+            </div>
+            <div v-if="file.difficulty != null" class="flex gap-1">
+              <dt>Trudność:</dt>
+              <dd class="text-slate-700">{{ file.difficulty }}/6</dd>
+            </div>
+          </dl>
         </li>
       </ul>
     </div>
