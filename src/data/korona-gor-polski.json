@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Rysy",
+    "elevation": 2499,
+    "range": "Tatry",
+    "coords": [49.1795474, 20.0880652],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Babia Góra",
+    "elevation": 1725,
+    "range": "Beskid Żywiecki",
+    "coords": [49.5731582, 19.5308005],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Śnieżka",
+    "elevation": 1603,
+    "range": "Karkonosze",
+    "coords": [50.7360141, 15.7399485],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Śnieżnik",
+    "elevation": 1425,
+    "range": "Masyw Śnieżnika",
+    "coords": [50.2075121, 16.8473628],
+    "conquered": true,
+    "conqueredAt": "01-05-2026"
+  },
+  {
+    "name": "Tarnica",
+    "elevation": 1346,
+    "range": "Bieszczady",
+    "coords": [49.0745824, 22.7262496],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Turbacz",
+    "elevation": 1310,
+    "range": "Gorce",
+    "coords": [49.5428665, 20.1113317],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Radziejowa",
+    "elevation": 1262,
+    "range": "Beskid Sądecki",
+    "coords": [49.4493234, 20.604172],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Skrzyczne",
+    "elevation": 1257,
+    "range": "Beskid Śląski",
+    "coords": [49.6844291, 19.0301657],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Mogielica",
+    "elevation": 1171,
+    "range": "Beskid Wyspowy",
+    "coords": [49.6553491, 20.2767064],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Wysoka Kopa",
+    "elevation": 1126,
+    "range": "Góry Izerskie",
+    "coords": [50.8496051, 15.4200839],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Rudawiec",
+    "elevation": 1106,
+    "range": "Góry Bialskie",
+    "coords": [50.2448175, 16.9769665],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Orlica",
+    "elevation": 1084,
+    "range": "Góry Orlickie",
+    "coords": [50.3532376, 16.3606809],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Wysoka",
+    "elevation": 1050,
+    "range": "Pieniny",
+    "coords": [49.3806821,20.5555269],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Wielka Sowa",
+    "elevation": 1015,
+    "range": "Góry Sowie",
+    "coords": [50.6803916, 16.4858004],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Lackowa",
+    "elevation": 997,
+    "range": "Beskid Niski",
+    "coords": [49.4264123, 21.1028913],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Kowadło",
+    "elevation": 989,
+    "range": "Góry Złote",
+    "coords": [50.2644223, 17.0133157],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Jagodna",
+    "elevation": 977,
+    "range": "Góry Bystrzyckie",
+    "coords": [50.2524048, 16.5649795],
+    "conquered": true,
+    "conqueredAt": "02-05-2026"
+  },
+  {
+    "name": "Skalnik",
+    "elevation": 945,
+    "range": "Rudawy Janowickie",
+    "coords": [50.8085925, 15.8999635],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Waligóra",
+    "elevation": 936,
+    "range": "Góry Kamienne",
+    "coords": [50.6807975, 16.2781765],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Czupel",
+    "elevation": 933,
+    "range": "Beskid Mały",
+    "coords": [49.7679883, 19.1612933],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Szczeliniec Wielki",
+    "elevation": 919,
+    "range": "Góry Stołowe",
+    "coords": [50.4842038, 16.3434724],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Lubomir",
+    "elevation": 904,
+    "range": "Beskid Makowski",
+    "coords": [49.7668143, 20.0593994],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Biskupia Kopa",
+    "elevation": 889,
+    "range": "Góry Opawskie",
+    "coords": [50.2566824, 17.4287874],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Chełmiec",
+    "elevation": 869,
+    "range": "Góry Wałbrzyskie",
+    "coords": [50.779388, 16.2107344],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Kłodzka Góra",
+    "elevation": 765,
+    "range": "Góry Bardzkie",
+    "coords": [50.4517519, 16.753228],
+    "conquered": true,
+    "conqueredAt": "03-05-2026"
+  },
+  {
+    "name": "Skopiec",
+    "elevation": 724,
+    "range": "Góry Kaczawskie",
+    "coords": [50.9438547, 15.8847495],
+    "conquered": false,
+    "conqueredAt": null
+  },
+  {
+    "name": "Ślęża",
+    "elevation": 718,
+    "range": "Masyw Ślęży",
+    "coords": [50.8645187, 16.7081236],
+    "conquered": true,
+    "conqueredAt": "30-04-2026"
+  },
+  {
+    "name": "Łysica",
+    "elevation": 612,
+    "range": "Góry Świętokrzyskie",
+    "coords": [50.8916101, 20.89679],
+    "conquered": false,
+    "conqueredAt": null
+  }
+]
