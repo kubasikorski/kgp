@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { usePeaksStore } from '../stores/peaks'
+import { usePeaksStore } from '@/stores/peaks'
 
 const props = defineProps({
   peak: { type: Object, required: true },
@@ -10,7 +10,6 @@ defineEmits(['close'])
 
 const store = usePeaksStore()
 const route = useRoute()
-const onDetailsRoute = computed(() => route.name === 'peak-details')
 
 const formattedDate = computed(() => {
   if (!props.peak.conqueredAt) return null
@@ -29,24 +28,6 @@ watch(
     pickedDate.value = today()
   },
 )
-
-const onPrimary = () => {
-  if (props.peak.conquered) {
-    store.toggle(props.peak.name)
-    return
-  }
-  if (!picking.value) {
-    picking.value = true
-    pickedDate.value = today()
-    return
-  }
-  store.toggle(props.peak.name, pickedDate.value)
-  picking.value = false
-}
-
-const cancelPicking = () => {
-  picking.value = false
-}
 </script>
 
 <template>
@@ -97,47 +78,10 @@ const cancelPicking = () => {
   </div>
   <div class="mt-4">
     <RouterLink
-      v-if="!onDetailsRoute"
       :to="{ name: 'peak-details', params: { peak_slug: peak.slug } }"
       class="block w-full rounded-lg px-3 py-2 text-center text-sm font-medium transition bg-emerald-600 text-white hover:bg-emerald-700"
     >
       Pokaż szczegóły
     </RouterLink>
-    <template v-else>
-      <div
-        v-if="picking && !peak.conquered"
-        class="mb-3 rounded-lg bg-slate-50 p-3 ring-1 ring-slate-200"
-      >
-        <label class="block text-xs font-medium text-slate-600 mb-4 pb-2">Data zdobycia</label>
-        <input
-          v-model="pickedDate"
-          type="date"
-          :max="today()"
-          class="mt-1 w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-800 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
-        />
-        <button
-          type="button"
-          class="mt-2 text-xs font-medium text-slate-500 hover:text-slate-700"
-          @click="cancelPicking"
-        >
-          Anuluj
-        </button>
-      </div>
-      <button
-        type="button"
-        class="w-full rounded-lg px-3 py-2 text-sm font-medium transition"
-        :class="
-          peak.conquered
-            ? 'bg-rose-50 text-rose-700 ring-1 ring-rose-200 hover:bg-rose-100'
-            : 'bg-emerald-600 text-white hover:bg-emerald-700'
-        "
-        :disabled="picking && !pickedDate"
-        @click="onPrimary"
-      >
-        {{
-          peak.conquered ? 'Cofnij zdobycie' : picking ? 'Potwierdź datę' : 'Oznacz jako zdobyty'
-        }}
-      </button>
-    </template>
   </div>
 </template>

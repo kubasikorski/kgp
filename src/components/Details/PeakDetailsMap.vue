@@ -6,12 +6,16 @@ import 'leaflet/dist/leaflet.css'
 const props = defineProps({
   peak: { type: Object, required: true },
   poi: { type: Array, default: () => [] },
+  focused: { type: Object, default: null },
 })
 
 const mapEl = useTemplateRef('mapEl')
 let map
 let peakMarker
 let poiLayer
+let poiMarkerMap = new Map()
+
+const poiKey = (p) => `${p.type}:${p.coords[0]},${p.coords[1]}`
 
 const peakIcon = (conquered) =>
   L.divIcon({
@@ -47,9 +51,14 @@ const render = () => {
     )
     .openPopup()
 
-  const poiMarkers = props.poi.map((p) =>
-    L.marker(p.coords, { icon: poiIcon(p.type) }).bindPopup(`<strong>${poiLabel(p.type)}</strong>`),
-  )
+  poiMarkerMap = new Map()
+  const poiMarkers = props.poi.map((p) => {
+    const popupTitle = p.name || poiLabel(p.type)
+    const popupHtml = `<strong>${popupTitle}</strong>`
+    const m = L.marker(p.coords, { icon: poiIcon(p.type) }).bindPopup(popupHtml)
+    poiMarkerMap.set(poiKey(p), m)
+    return m
+  })
   poiLayer = L.featureGroup(poiMarkers).addTo(map)
 
   if (poiMarkers.length) {
@@ -70,9 +79,21 @@ onMounted(() => {
 })
 
 watch(() => props.peak?.slug, render)
-watch(() => props.peak?.conquered, (conquered) => {
-  if (peakMarker && conquered !== undefined) peakMarker.setIcon(peakIcon(conquered))
-})
+watch(
+  () => props.peak?.conquered,
+  (conquered) => {
+    if (peakMarker && conquered !== undefined) peakMarker.setIcon(peakIcon(conquered))
+  },
+)
+watch(
+  () => props.focused,
+  (poi) => {
+    if (!map || !poi) return
+    const marker = poiMarkerMap.get(poiKey(poi))
+    map.flyTo(poi.coords, 15, { duration: 0.8 })
+    if (marker) marker.openPopup()
+  },
+)
 
 onBeforeUnmount(() => {
   map?.remove()

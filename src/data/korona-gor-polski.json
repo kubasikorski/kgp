@@ -38,6 +38,7 @@
       {
         "type": "parking",
         "coords": [50.2200106, 16.7898672],
+        "name": "Parking Międzygórze",
         "description": "Idealne miejsce wypadowe na szlak na Śnieżnik. Jest tu wystarczająco dużo miejsca do bezpłatnego parkowania. Dostępny jest tutaj schron i kilka stołów. Można tu również przenocować w samochodzie lub przyczepie kempingowej."
       }
     ]
@@ -161,6 +162,12 @@
     "poi": [
       {
         "type": "parking",
+        "name": "Parking przy Spalonej Drodze",
+        "coords": [50.2766556, 16.5367636]
+      },
+      {
+        "type": "parking",
+        "name": "Parking przy Spalonej Drodze",
         "coords": [50.2766556, 16.5367636]
       }
     ]

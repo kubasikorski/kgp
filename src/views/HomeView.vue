@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import rawPeaks from '../data/korona-gor-polski.json'
-import { usePeaksStore } from '../stores/peaks'
+import { usePeaksStore } from '@/stores/peaks'
 import PeakMap from '../components/PeakMap.vue'
 import PeakSidebar from '../components/PeakSidebar.vue'
 
