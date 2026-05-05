@@ -29,23 +29,42 @@ const peakIcon = (peak) =>
     popupAnchor: [0, -9],
   })
 
+const syncMarkers = (fitBounds) => {
+  if (!map) return
+  const nextNames = new Set(props.peaks.map((p) => p.name))
+  for (const [name, marker] of markersByName) {
+    if (!nextNames.has(name)) {
+      marker.remove()
+      markersByName.delete(name)
+    }
+  }
+  for (const peak of props.peaks) {
+    const existing = markersByName.get(peak.name)
+    if (existing) {
+      existing.setIcon(peakIcon(peak))
+    } else {
+      const marker = L.marker(peak.coords, { icon: peakIcon(peak) })
+        .addTo(map)
+        .bindPopup(`<strong>${peak.name}</strong> (${peak.elevation} m)<br>${peak.range}`)
+        .on('click', () => emit('select', peak))
+      markersByName.set(peak.name, marker)
+    }
+  }
+  if (markersByName.size) {
+    allBounds = L.featureGroup([...markersByName.values()]).getBounds()
+    if (fitBounds) map.fitBounds(allBounds, { padding: [40, 40] })
+  } else {
+    allBounds = null
+  }
+}
+
 onMounted(() => {
   map = L.map(mapEl.value)
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19,
   }).addTo(map)
-
-  const markers = props.peaks.map((peak) => {
-    const marker = L.marker(peak.coords, { icon: peakIcon(peak) })
-      .addTo(map)
-      .bindPopup(`<strong>${peak.name}</strong> (${peak.elevation} m)<br>${peak.range}`)
-      .on('click', () => emit('select', peak))
-    markersByName.set(peak.name, marker)
-    return marker
-  })
-  allBounds = L.featureGroup(markers).getBounds()
-  map.fitBounds(allBounds, { padding: [40, 40] })
+  syncMarkers(true)
 })
 
 watch(
@@ -63,12 +82,12 @@ watch(
 )
 
 watch(
-  () => props.peaks.map((p) => `${p.conquered ? 1 : 0}${p.planned ? 1 : 0}`),
-  () => {
+  () => props.peaks.map((p) => `${p.name}:${p.conquered ? 1 : 0}${p.planned ? 1 : 0}`).join(),
+  (next, prev) => {
     if (!map) return
-    for (const peak of props.peaks) {
-      markersByName.get(peak.name)?.setIcon(peakIcon(peak))
-    }
+    const prevNames = (prev ?? '').split(',').map((s) => s.split(':')[0]).join()
+    const nextNames = next.split(',').map((s) => s.split(':')[0]).join()
+    syncMarkers(prevNames !== nextNames)
   },
 )
 

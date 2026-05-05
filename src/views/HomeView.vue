@@ -16,6 +16,13 @@ const peaks = computed(() =>
   })),
 )
 
+const filter = ref('all')
+const visiblePeaks = computed(() => {
+  if (filter.value === 'conquered') return peaks.value.filter((p) => p.conquered)
+  if (filter.value === 'planned') return peaks.value.filter((p) => p.planned)
+  return peaks.value
+})
+
 const selectedName = ref(null)
 const selected = computed(
   () => peaks.value.find((p) => p.name === selectedName.value) ?? null,
@@ -34,13 +41,16 @@ const handleClose = () => {
     class="grid h-screen w-screen grid-rows-[2fr_1fr] gap-4 bg-slate-100 p-4 md:grid-cols-[3fr_1fr] md:grid-rows-1"
   >
     <PeakMap
-      :peaks="peaks"
+      :peaks="visiblePeaks"
       :selected="selected"
       @select="handleSelect"
     />
     <PeakSidebar
-      :peaks="peaks"
+      :peaks="visiblePeaks"
+      :all-peaks="peaks"
       :selected="selected"
+      :filter="filter"
+      @update:filter="filter = $event"
       @select="handleSelect"
       @close="handleClose"
     />

@@ -6,14 +6,17 @@ import { usePeaksStore } from '@/stores/peaks'
 
 const props = defineProps({
   peaks: { type: Array, required: true },
+  allPeaks: { type: Array, required: true },
   selected: { type: Object, default: null },
+  filter: { type: String, default: 'all' },
 })
-defineEmits(['select', 'close'])
+defineEmits(['select', 'close', 'update:filter'])
 
 const store = usePeaksStore()
 const fileInput = useTemplateRef('fileInput')
 
-const conqueredCount = computed(() => props.peaks.filter((p) => p.conquered).length)
+const conqueredCount = computed(() => props.allPeaks.filter((p) => p.conquered).length)
+const totalCount = computed(() => props.allPeaks.length)
 
 const onExport = () => {
   const data = store.exportData()
@@ -66,7 +69,7 @@ const onImportFile = async (event) => {
         <h1 class="text-xl font-semibold text-slate-900">Korona Gór Polski</h1>
         <p class="mt-1 text-sm text-slate-500">
           Zdobyte: <span class="font-medium text-emerald-600">{{ conqueredCount }}</span> /
-          {{ peaks.length }}
+          {{ totalCount }}
         </p>
       </div>
       <div class="flex gap-1">
@@ -130,7 +133,10 @@ const onImportFile = async (event) => {
     <PeakList
       class="hidden md:block"
       :peaks="peaks"
+      :all-peaks="allPeaks"
       :selected="selected"
+      :filter="filter"
+      @update:filter="$emit('update:filter', $event)"
       @select="$emit('select', $event)"
     />
   </aside>

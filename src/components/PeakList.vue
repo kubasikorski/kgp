@@ -1,24 +1,20 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   peaks: { type: Array, required: true },
+  allPeaks: { type: Array, required: true },
   selected: { type: Object, default: null },
+  filter: { type: String, default: 'all' },
 })
-defineEmits(['select'])
+const emit = defineEmits(['select', 'update:filter'])
 
-const filter = ref('all')
-
-const filtered = computed(() => {
-  if (filter.value === 'conquered') return props.peaks.filter((p) => p.conquered)
-  if (filter.value === 'planned') return props.peaks.filter((p) => p.planned)
-  return props.peaks
-})
+const setFilter = (value) => emit('update:filter', value)
 
 const counts = computed(() => ({
-  all: props.peaks.length,
-  conquered: props.peaks.filter((p) => p.conquered).length,
-  planned: props.peaks.filter((p) => p.planned).length,
+  all: props.allPeaks.length,
+  conquered: props.allPeaks.filter((p) => p.conquered).length,
+  planned: props.allPeaks.filter((p) => p.planned).length,
 }))
 
 const dotClass = (peak) => {
@@ -35,7 +31,7 @@ const dotClass = (peak) => {
         type="button"
         class="flex-1 rounded-md px-2 py-1 transition"
         :class="filter === 'all' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
-        @click="filter = 'all'"
+        @click="setFilter('all')"
       >
         Wszystkie ({{ counts.all }})
       </button>
@@ -43,7 +39,7 @@ const dotClass = (peak) => {
         type="button"
         class="flex-1 rounded-md px-2 py-1 transition"
         :class="filter === 'conquered' ? 'bg-white text-emerald-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
-        @click="filter = 'conquered'"
+        @click="setFilter('conquered')"
       >
         Zdobyte ({{ counts.conquered }})
       </button>
@@ -51,7 +47,7 @@ const dotClass = (peak) => {
         type="button"
         class="flex-1 rounded-md px-2 py-1 transition"
         :class="filter === 'planned' ? 'bg-white text-amber-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
-        @click="filter = 'planned'"
+        @click="setFilter('planned')"
       >
         Zaplanowane ({{ counts.planned }})
       </button>
@@ -60,7 +56,7 @@ const dotClass = (peak) => {
       class="flex flex-col divide-y divide-slate-100 overflow-y-auto rounded-xl ring-1 ring-slate-200"
     >
       <li
-        v-for="peak in filtered"
+        v-for="peak in peaks"
         :key="peak.name"
         class="flex cursor-pointer items-center justify-between px-3 py-2 text-sm transition hover:bg-slate-50"
         :class="selected?.name === peak.name ? 'bg-slate-50' : ''"
@@ -72,7 +68,7 @@ const dotClass = (peak) => {
         </span>
         <span class="text-xs text-slate-500">{{ peak.elevation }} m</span>
       </li>
-      <li v-if="!filtered.length" class="px-3 py-4 text-center text-xs text-slate-500">
+      <li v-if="!peaks.length" class="px-3 py-4 text-center text-xs text-slate-500">
         Brak szczytów
       </li>
     </ul>
