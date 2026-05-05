@@ -28,8 +28,8 @@
     "elevation": 1425,
     "range": "Masyw Śnieżnika",
     "coords": [50.2075121, 16.8473628],
-    "conquered": true,
-    "conqueredAt": "01-05-2026"
+    "conquered": false,
+    "conqueredAt": null
   },
   {
     "name": "Tarnica",
@@ -132,8 +132,8 @@
     "elevation": 977,
     "range": "Góry Bystrzyckie",
     "coords": [50.2524048, 16.5649795],
-    "conquered": true,
-    "conqueredAt": "02-05-2026"
+    "conquered": false,
+    "conqueredAt": null
   },
   {
     "name": "Skalnik",
@@ -196,8 +196,8 @@
     "elevation": 765,
     "range": "Góry Bardzkie",
     "coords": [50.4517519, 16.753228],
-    "conquered": true,
-    "conqueredAt": "03-05-2026"
+    "conquered": false,
+    "conqueredAt": null
   },
   {
     "name": "Skopiec",
@@ -212,8 +212,8 @@
     "elevation": 718,
     "range": "Masyw Ślęży",
     "coords": [50.8645187, 16.7081236],
-    "conquered": true,
-    "conqueredAt": "30-04-2026"
+    "conquered": false,
+    "conqueredAt": null
   },
   {
     "name": "Łysica",

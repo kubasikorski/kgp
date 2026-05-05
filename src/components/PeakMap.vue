@@ -83,7 +83,7 @@ onBeforeUnmount(() => {
       <img
         src="https://kgp.info.pl/wp-content/themes/korona/dist/images/logo_d3781823.png"
         alt="Korona Gór Polski"
-        class="h-32 w-auto"
+        class="2xl:h-32 h-16 w-auto"
       />
     </a>
   </section>
