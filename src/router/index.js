@@ -8,6 +8,11 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue'),
     },
+    {
+      path: '/peak/:peak_slug',
+      name: 'peak-details',
+      component: () => import('../views/PeakDetails.vue'),
+    },
   ],
 })
 

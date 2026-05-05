@@ -1,0 +1,121 @@
+<script setup>
+import { onMounted, onBeforeUnmount, useTemplateRef, watch } from 'vue'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+
+const props = defineProps({
+  peak: { type: Object, required: true },
+  poi: { type: Array, default: () => [] },
+})
+
+const mapEl = useTemplateRef('mapEl')
+let map
+let peakMarker
+let poiLayer
+
+const peakIcon = (conquered) =>
+  L.divIcon({
+    className: 'peak-marker',
+    html: `<span class="peak-pin ${conquered ? 'peak-pin--conquered' : 'peak-pin--pending'}"></span>`,
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+    popupAnchor: [0, -9],
+  })
+
+const poiIcon = (type) => {
+  const label = type === 'parking' ? 'P' : '?'
+  return L.divIcon({
+    className: 'poi-marker',
+    html: `<span class="poi-pin poi-pin--${type}">${label}</span>`,
+    iconSize: [22, 22],
+    iconAnchor: [11, 11],
+    popupAnchor: [0, -11],
+  })
+}
+
+const poiLabel = (type) => (type === 'parking' ? 'Parking' : type)
+
+const render = () => {
+  if (!map) return
+  if (peakMarker) peakMarker.remove()
+  if (poiLayer) poiLayer.remove()
+
+  peakMarker = L.marker(props.peak.coords, { icon: peakIcon(props.peak.conquered) })
+    .addTo(map)
+    .bindPopup(
+      `<strong>${props.peak.name}</strong> (${props.peak.elevation} m)<br>${props.peak.range}`,
+    )
+    .openPopup()
+
+  const poiMarkers = props.poi.map((p) =>
+    L.marker(p.coords, { icon: poiIcon(p.type) }).bindPopup(`<strong>${poiLabel(p.type)}</strong>`),
+  )
+  poiLayer = L.featureGroup(poiMarkers).addTo(map)
+
+  if (poiMarkers.length) {
+    map.fitBounds(L.featureGroup([peakMarker, ...poiMarkers]).getBounds(), { padding: [40, 40] })
+  } else {
+    map.setView(props.peak.coords, 13)
+  }
+}
+
+onMounted(() => {
+  map = L.map(mapEl.value)
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19,
+  }).addTo(map)
+  render()
+})
+
+watch(() => props.peak?.slug, render)
+watch(() => props.peak?.conquered, (conquered) => {
+  if (peakMarker && conquered !== undefined) peakMarker.setIcon(peakIcon(conquered))
+})
+
+onBeforeUnmount(() => {
+  map?.remove()
+})
+</script>
+
+<template>
+  <section class="relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
+    <div ref="mapEl" class="h-full w-full"></div>
+  </section>
+</template>
+
+<style>
+.peak-pin {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+.peak-pin--pending {
+  background: #ef4444;
+}
+.peak-pin--conquered {
+  background: #16a34a;
+}
+.poi-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  line-height: 1;
+}
+.poi-pin--parking {
+  background: #2563eb;
+}
+</style>

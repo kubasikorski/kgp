@@ -1,6 +1,7 @@
 [
   {
     "name": "Rysy",
+    "slug": "rysy",
     "elevation": 2499,
     "range": "Tatry",
     "coords": [49.1795474, 20.0880652],
@@ -9,6 +10,7 @@
   },
   {
     "name": "Babia Góra",
+    "slug": "babia-gora",
     "elevation": 1725,
     "range": "Beskid Żywiecki",
     "coords": [49.5731582, 19.5308005],
@@ -17,6 +19,7 @@
   },
   {
     "name": "Śnieżka",
+    "slug": "sniezka",
     "elevation": 1603,
     "range": "Karkonosze",
     "coords": [50.7360141, 15.7399485],
@@ -25,6 +28,7 @@
   },
   {
     "name": "Śnieżnik",
+    "slug": "snieznik",
     "elevation": 1425,
     "range": "Masyw Śnieżnika",
     "coords": [50.2075121, 16.8473628],
@@ -33,6 +37,7 @@
   },
   {
     "name": "Tarnica",
+    "slug": "tarnica",
     "elevation": 1346,
     "range": "Bieszczady",
     "coords": [49.0745824, 22.7262496],
@@ -41,6 +46,7 @@
   },
   {
     "name": "Turbacz",
+    "slug": "turbacz",
     "elevation": 1310,
     "range": "Gorce",
     "coords": [49.5428665, 20.1113317],
@@ -49,6 +55,7 @@
   },
   {
     "name": "Radziejowa",
+    "slug": "radziejowa",
     "elevation": 1262,
     "range": "Beskid Sądecki",
     "coords": [49.4493234, 20.604172],
@@ -57,6 +64,7 @@
   },
   {
     "name": "Skrzyczne",
+    "slug": "skrzyczne",
     "elevation": 1257,
     "range": "Beskid Śląski",
     "coords": [49.6844291, 19.0301657],
@@ -65,6 +73,7 @@
   },
   {
     "name": "Mogielica",
+    "slug": "mogielica",
     "elevation": 1171,
     "range": "Beskid Wyspowy",
     "coords": [49.6553491, 20.2767064],
@@ -73,6 +82,7 @@
   },
   {
     "name": "Wysoka Kopa",
+    "slug": "wysoka-kopa",
     "elevation": 1126,
     "range": "Góry Izerskie",
     "coords": [50.8496051, 15.4200839],
@@ -81,6 +91,7 @@
   },
   {
     "name": "Rudawiec",
+    "slug": "rudawiec",
     "elevation": 1106,
     "range": "Góry Bialskie",
     "coords": [50.2448175, 16.9769665],
@@ -89,6 +100,7 @@
   },
   {
     "name": "Orlica",
+    "slug": "orlica",
     "elevation": 1084,
     "range": "Góry Orlickie",
     "coords": [50.3532376, 16.3606809],
@@ -97,6 +109,7 @@
   },
   {
     "name": "Wysoka",
+    "slug": "wysoka",
     "elevation": 1050,
     "range": "Pieniny",
     "coords": [49.3806821,20.5555269],
@@ -105,6 +118,7 @@
   },
   {
     "name": "Wielka Sowa",
+    "slug": "wielka-sowa",
     "elevation": 1015,
     "range": "Góry Sowie",
     "coords": [50.6803916, 16.4858004],
@@ -113,6 +127,7 @@
   },
   {
     "name": "Lackowa",
+    "slug": "lackowa",
     "elevation": 997,
     "range": "Beskid Niski",
     "coords": [49.4264123, 21.1028913],
@@ -121,6 +136,7 @@
   },
   {
     "name": "Kowadło",
+    "slug": "kowadlo",
     "elevation": 989,
     "range": "Góry Złote",
     "coords": [50.2644223, 17.0133157],
@@ -129,14 +145,22 @@
   },
   {
     "name": "Jagodna",
+    "slug": "jagodna",
     "elevation": 977,
     "range": "Góry Bystrzyckie",
     "coords": [50.2524048, 16.5649795],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "poi": [
+      {
+        "type": "parking",
+        "coords": [50.2766556, 16.5367636]
+      }
+    ]
   },
   {
     "name": "Skalnik",
+    "slug": "skalnik",
     "elevation": 945,
     "range": "Rudawy Janowickie",
     "coords": [50.8085925, 15.8999635],
@@ -145,6 +169,7 @@
   },
   {
     "name": "Waligóra",
+    "slug": "waligora",
     "elevation": 936,
     "range": "Góry Kamienne",
     "coords": [50.6807975, 16.2781765],
@@ -153,6 +178,7 @@
   },
   {
     "name": "Czupel",
+    "slug": "czupel",
     "elevation": 933,
     "range": "Beskid Mały",
     "coords": [49.7679883, 19.1612933],
@@ -161,6 +187,7 @@
   },
   {
     "name": "Szczeliniec Wielki",
+    "slug": "szczeliniec-wielki",
     "elevation": 919,
     "range": "Góry Stołowe",
     "coords": [50.4842038, 16.3434724],
@@ -169,6 +196,7 @@
   },
   {
     "name": "Lubomir",
+    "slug": "lubomir",
     "elevation": 904,
     "range": "Beskid Makowski",
     "coords": [49.7668143, 20.0593994],
@@ -177,6 +205,7 @@
   },
   {
     "name": "Biskupia Kopa",
+    "slug": "biskupia-kopa",
     "elevation": 889,
     "range": "Góry Opawskie",
     "coords": [50.2566824, 17.4287874],
@@ -185,6 +214,7 @@
   },
   {
     "name": "Chełmiec",
+    "slug": "chelmiec",
     "elevation": 869,
     "range": "Góry Wałbrzyskie",
     "coords": [50.779388, 16.2107344],
@@ -193,6 +223,7 @@
   },
   {
     "name": "Kłodzka Góra",
+    "slug": "klodzka-gora",
     "elevation": 765,
     "range": "Góry Bardzkie",
     "coords": [50.4517519, 16.753228],
@@ -201,6 +232,7 @@
   },
   {
     "name": "Skopiec",
+    "slug": "skopiec",
     "elevation": 724,
     "range": "Góry Kaczawskie",
     "coords": [50.9438547, 15.8847495],
@@ -209,6 +241,7 @@
   },
   {
     "name": "Ślęża",
+    "slug": "sleza",
     "elevation": 718,
     "range": "Masyw Ślęży",
     "coords": [50.8645187, 16.7081236],
@@ -217,6 +250,7 @@
   },
   {
     "name": "Łysica",
+    "slug": "lysica",
     "elevation": 612,
     "range": "Góry Świętokrzyskie",
     "coords": [50.8916101, 20.89679],
