@@ -295,6 +295,7 @@
       {
         "name": "Podejście od schroniska PTTK Jagodna",
         "url": "/src/data/gpx/jagodna/jagodna1.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/m0jg",
         "trailStart": "Prz. Spalona",
         "trailDist": 8.4,
         "trailTime": "2:25h",
@@ -303,6 +304,7 @@
       {
         "name": "Schronisko Jagodna - pętla",
         "url": "/src/data/gpx/jagodna/route-m0ip.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/m0ip",
         "trailStart": "Prz. Spalona",
         "trailDist": 15.4,
         "trailTime": "4:24h",
@@ -311,6 +313,7 @@
       {
         "name": "Przełęcz nad Porębą",
         "url": "/src/data/gpx/jagodna/route-s467.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/s467",
         "trailStart": "Przełęcz nad Porębą",
         "trailDist": 7.3,
         "trailTime": "2:20h",
@@ -493,7 +496,36 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/sleza/",
     "coords": [50.8645187, 16.7081236],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "gpx": [
+      {
+        "name": "Przełęcz Tąpadła → Przełęcz Tąpadła",
+        "url": "/src/data/gpx/sleza/route-ocd6.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ocd6",
+        "trailStart": "Prz. Spalona",
+        "trailDist": 6.1,
+        "trailTime": "2:08h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Tąpadła (wariant)",
+        "url": "/src/data/gpx/sleza/route-wmqv.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/wmqv",
+        "trailStart": "Prz. Spalona",
+        "trailDist": 7.7,
+        "trailTime": "2:39h",
+        "difficulty": 1
+      },
+      {
+        "name": "Dom Turysty Pod Wieżycą → Dom Turysty",
+        "url": "/src/data/gpx/sleza/route-hb0w.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/hb0w",
+        "trailStart": "Przełęcz nad Porębą",
+        "trailDist": 10.1,
+        "trailTime": "3:20h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Łysica",

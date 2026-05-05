@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePeaksStore } from '@/stores/peaks'
+import ElevationChart from '@/components/Details/ElevationChart.vue'
 
 const props = defineProps({
   peak: { type: Object, required: true },
@@ -53,11 +54,10 @@ const cancelPicking = () => {
 </script>
 
 <template>
+  <div v-if="peak.description">
+    <p class="text-slate-800">{{ peak.description }}</p>
+  </div>
   <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
-    <div class="mb-4 pb-4" v-if="peak.description">
-      <p class="text-slate-800">{{ peak.description }} m</p>
-    </div>
-
     <dl class="mt-3 space-y-1 text-sm">
       <div class="flex justify-between pb-4">
         <dt class="text-slate-500">Status</dt>
@@ -153,26 +153,51 @@ const cancelPicking = () => {
           "
           @click="emit('select-gpx', selectedGpx?.url === file.url ? null : file)"
         >
-          <p>{{ file.name }}</p>
-          <dl
-            v-if="file.trailDist != null || file.trailTime || file.difficulty != null"
-            class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500"
-          >
-            <div v-if="file.trailDist != null" class="flex gap-1">
-              <dt>Dystans:</dt>
-              <dd class="text-slate-700">{{ file.trailDist }} km</dd>
+          <div class="flex items-start gap-2">
+            <div class="flex-1">
+              <p>{{ file.name }}</p>
+              <dl
+                v-if="file.trailDist != null || file.trailTime"
+                class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500"
+              >
+                <div v-if="file.trailDist != null" class="flex gap-1">
+                  <dt>Dystans:</dt>
+                  <dd class="text-slate-700">{{ file.trailDist }} km</dd>
+                </div>
+                <div v-if="file.trailTime" class="flex gap-1">
+                  <dt>Czas:</dt>
+                  <dd class="text-slate-700">{{ file.trailTime }}</dd>
+                </div>
+              </dl>
             </div>
-            <div v-if="file.trailTime" class="flex gap-1">
-              <dt>Czas:</dt>
-              <dd class="text-slate-700">{{ file.trailTime }}</dd>
-            </div>
-            <div v-if="file.difficulty != null" class="flex gap-1">
-              <dt>Trudność:</dt>
-              <dd class="text-slate-700">{{ file.difficulty }}/6</dd>
-            </div>
-          </dl>
+            <a
+              v-if="file.mapaUrl"
+              :href="file.mapaUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="shrink-0 rounded-md p-1 text-slate-500 hover:bg-emerald-100 hover:text-emerald-700"
+              title="Otwórz na mapie"
+              @click.stop
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+              >
+                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6" />
+                <line x1="9" y1="3" x2="9" y2="18" />
+                <line x1="15" y1="6" x2="15" y2="21" />
+              </svg>
+            </a>
+          </div>
         </li>
       </ul>
     </div>
+    <ElevationChart v-if="selectedGpx" :gpx="selectedGpx" />
   </template>
 </template>
