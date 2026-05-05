@@ -10,9 +10,9 @@ const store = usePeaksStore()
 const peaks = computed(() =>
   rawPeaks.map((peak) => ({
     ...peak,
-    conquered: store.isConquered(peak.name),
-    conqueredAt: store.conqueredAtFor(peak.name),
-    planned: store.isPlanned(peak.name),
+    conquered: store.isConquered(peak.slug),
+    conqueredAt: store.conqueredAtFor(peak.slug),
+    planned: store.isPlanned(peak.slug),
   })),
 )
 

@@ -12,7 +12,7 @@ const emit = defineEmits(['close', 'focus-poi', 'select-gpx'])
 
 const store = usePeaksStore()
 
-const isPlanned = computed(() => store.isPlanned(props.peak.name))
+const isPlanned = computed(() => store.isPlanned(props.peak.slug))
 
 const formattedDate = computed(() => {
   if (!props.peak.conqueredAt) return null
@@ -29,7 +29,7 @@ const picking = ref(false)
 const pickedDate = ref(today())
 
 watch(
-  () => props.peak.name,
+  () => props.peak.slug,
   () => {
     picking.value = false
     pickedDate.value = today()
@@ -38,7 +38,7 @@ watch(
 
 const onPrimary = () => {
   if (props.peak.conquered) {
-    store.toggle(props.peak.name)
+    store.toggle(props.peak.slug)
     return
   }
   if (!picking.value) {
@@ -46,7 +46,7 @@ const onPrimary = () => {
     pickedDate.value = today()
     return
   }
-  store.toggle(props.peak.name, pickedDate.value)
+  store.toggle(props.peak.slug, pickedDate.value)
   picking.value = false
 }
 
@@ -55,7 +55,7 @@ const cancelPicking = () => {
 }
 
 const togglePlanned = () => {
-  store.togglePlanned(props.peak.name)
+  store.togglePlanned(props.peak.slug)
 }
 </script>
 

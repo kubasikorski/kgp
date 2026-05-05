@@ -5,6 +5,9 @@ import rawPeaks from '../data/korona-gor-polski.json'
 const STORAGE_KEY = 'kgp:conquered'
 const PLANNED_KEY = 'kgp:planned'
 
+const slugByName = new Map(rawPeaks.map((p) => [p.name, p.slug]))
+const validSlugs = new Set(rawPeaks.map((p) => p.slug))
+
 const parseSeedDate = (value) => {
   if (!value) return new Date().toISOString()
   const match = /^(\d{2})-(\d{2})-(\d{4})$/.exec(value)
@@ -19,15 +22,38 @@ const parseSeedDate = (value) => {
 const seedFromJson = () => {
   const initial = {}
   for (const peak of rawPeaks) {
-    if (peak.conquered) initial[peak.name] = parseSeedDate(peak.conqueredAt)
+    if (peak.conquered) initial[peak.slug] = parseSeedDate(peak.conqueredAt)
   }
   return initial
 }
 
-const loadInitial = () => {
+// Migrate legacy entries keyed by name → slug. Unknown keys are dropped.
+const normalizeConquered = (raw) => {
+  const out = {}
+  if (!raw || typeof raw !== 'object') return out
+  for (const [key, iso] of Object.entries(raw)) {
+    if (typeof iso !== 'string') continue
+    const slug = validSlugs.has(key) ? key : slugByName.get(key)
+    if (slug) out[slug] = iso
+  }
+  return out
+}
+
+const normalizePlanned = (raw) => {
+  if (!Array.isArray(raw)) return []
+  const out = new Set()
+  for (const key of raw) {
+    if (typeof key !== 'string') continue
+    const slug = validSlugs.has(key) ? key : slugByName.get(key)
+    if (slug) out.add(slug)
+  }
+  return [...out]
+}
+
+const loadConquered = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw)
+    if (raw) return normalizeConquered(JSON.parse(raw))
   } catch {
     /* fall back to seed */
   }
@@ -37,10 +63,7 @@ const loadInitial = () => {
 const loadPlanned = () => {
   try {
     const raw = localStorage.getItem(PLANNED_KEY)
-    if (raw) {
-      const parsed = JSON.parse(raw)
-      if (Array.isArray(parsed)) return parsed
-    }
+    if (raw) return normalizePlanned(JSON.parse(raw))
   } catch {
     /* fall through */
   }
@@ -48,7 +71,7 @@ const loadPlanned = () => {
 }
 
 export const usePeaksStore = defineStore('peaks', () => {
-  const conqueredAt = ref(loadInitial())
+  const conqueredAt = ref(loadConquered())
   const planned = ref(loadPlanned())
 
   watch(
@@ -67,28 +90,43 @@ export const usePeaksStore = defineStore('peaks', () => {
     { deep: true },
   )
 
-  const isConquered = (name) => Boolean(conqueredAt.value[name])
-  const conqueredAtFor = (name) => conqueredAt.value[name] ?? null
-  const isPlanned = (name) => planned.value.includes(name)
+  const isConquered = (slug) => Boolean(conqueredAt.value[slug])
+  const conqueredAtFor = (slug) => conqueredAt.value[slug] ?? null
+  const isPlanned = (slug) => planned.value.includes(slug)
 
-  const toggle = (name, date) => {
+  const toggle = (slug, date) => {
     const next = { ...conqueredAt.value }
-    if (next[name]) {
-      delete next[name]
+    if (next[slug]) {
+      delete next[slug]
     } else {
       const parsed = date ? new Date(date) : new Date()
-      next[name] = (Number.isNaN(parsed.getTime()) ? new Date() : parsed).toISOString()
-      if (planned.value.includes(name)) {
-        planned.value = planned.value.filter((n) => n !== name)
+      next[slug] = (Number.isNaN(parsed.getTime()) ? new Date() : parsed).toISOString()
+      if (planned.value.includes(slug)) {
+        planned.value = planned.value.filter((s) => s !== slug)
       }
     }
     conqueredAt.value = next
   }
 
-  const togglePlanned = (name) => {
-    planned.value = planned.value.includes(name)
-      ? planned.value.filter((n) => n !== name)
-      : [...planned.value, name]
+  const togglePlanned = (slug) => {
+    planned.value = planned.value.includes(slug)
+      ? planned.value.filter((s) => s !== slug)
+      : [...planned.value, slug]
+  }
+
+  const exportData = () => ({
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    conquered: conqueredAt.value,
+    planned: planned.value,
+  })
+
+  const importData = (data) => {
+    if (!data || typeof data !== 'object') {
+      throw new Error('Niepoprawny plik')
+    }
+    conqueredAt.value = normalizeConquered(data.conquered)
+    planned.value = normalizePlanned(data.planned)
   }
 
   return {
@@ -99,5 +137,7 @@ export const usePeaksStore = defineStore('peaks', () => {
     isPlanned,
     toggle,
     togglePlanned,
+    exportData,
+    importData,
   }
 })
