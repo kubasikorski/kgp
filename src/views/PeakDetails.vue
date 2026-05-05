@@ -1,13 +1,12 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import rawPeaks from '../data/korona-gor-polski.json'
 import { usePeaksStore } from '@/stores/peaks'
 import PeakDetailsMap from '../components/Details/PeakDetailsMap.vue'
 import SideBarDetails from '@/components/Details/SideBarDetails.vue'
 
 const route = useRoute()
-const router = useRouter()
 const store = usePeaksStore()
 
 const peak = computed(() => {
@@ -21,10 +20,18 @@ const peak = computed(() => {
 })
 
 const focusedPoi = ref(null)
-watch(() => route.params.peak_slug, () => { focusedPoi.value = null })
+const selectedGpx = ref(null)
+watch(() => route.params.peak_slug, () => {
+  focusedPoi.value = null
+  selectedGpx.value = null
+})
 
 const onFocusPoi = (poi) => {
   focusedPoi.value = { ...poi, _t: Date.now() }
+}
+
+const onSelectGpx = (gpx) => {
+  selectedGpx.value = gpx
 }
 
 </script>
@@ -33,7 +40,13 @@ const onFocusPoi = (poi) => {
   <main
     class="grid h-screen w-screen grid-rows-[2fr_1fr] gap-4 bg-slate-100 p-4 md:grid-cols-[3fr_1fr] md:grid-rows-1"
   >
-    <PeakDetailsMap v-if="peak" :peak="peak" :poi="peak.poi ?? []" :focused="focusedPoi" />
+    <PeakDetailsMap
+      v-if="peak"
+      :peak="peak"
+      :poi="peak.poi ?? []"
+      :focused="focusedPoi"
+      :gpx="selectedGpx"
+    />
     <section v-else class="rounded-2xl bg-white shadow-lg ring-1 ring-slate-200"></section>
     <aside
       class="flex flex-col gap-4 overflow-y-auto rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200"
@@ -58,7 +71,12 @@ const onFocusPoi = (poi) => {
           Powrót
         </RouterLink>
       </header>
-      <SideBarDetails :peak="peak" @focus-poi="onFocusPoi" />
+      <SideBarDetails
+        :peak="peak"
+        :selected-gpx="selectedGpx"
+        @focus-poi="onFocusPoi"
+        @select-gpx="onSelectGpx"
+      />
     </aside>
   </main>
 </template>

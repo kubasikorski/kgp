@@ -159,12 +159,13 @@
     "coords": [50.2524048, 16.5649795],
     "conquered": false,
     "conqueredAt": null,
-    "poi": [
+    "gpx": [
       {
-        "type": "parking",
-        "name": "Parking przy Spalonej Drodze",
-        "coords": [50.2766556, 16.5367636]
-      },
+        "name": "Podejście od schroniska PTTK Jagodna",
+        "url": "/src/data/gpx/jagodna/jagodna1.gpx"
+      }
+    ],
+    "poi": [
       {
         "type": "parking",
         "name": "Parking przy Spalonej Drodze",

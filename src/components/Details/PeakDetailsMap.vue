@@ -7,6 +7,13 @@ const props = defineProps({
   peak: { type: Object, required: true },
   poi: { type: Array, default: () => [] },
   focused: { type: Object, default: null },
+  gpx: { type: Object, default: null },
+})
+
+const gpxUrls = import.meta.glob('@/data/gpx/**/*.gpx', {
+  eager: true,
+  query: '?url',
+  import: 'default',
 })
 
 const mapEl = useTemplateRef('mapEl')
@@ -14,6 +21,7 @@ let map
 let peakMarker
 let poiLayer
 let poiMarkerMap = new Map()
+let gpxLayer
 
 const poiKey = (p) => `${p.type}:${p.coords[0]},${p.coords[1]}`
 
@@ -92,6 +100,40 @@ watch(
     const marker = poiMarkerMap.get(poiKey(poi))
     map.flyTo(poi.coords, 15, { duration: 0.8 })
     if (marker) marker.openPopup()
+  },
+)
+
+const parseGpx = (xmlText) => {
+  const doc = new DOMParser().parseFromString(xmlText, 'application/xml')
+  const points = Array.from(doc.getElementsByTagName('trkpt'))
+  if (!points.length) {
+    return Array.from(doc.getElementsByTagName('rtept')).map((p) => [
+      parseFloat(p.getAttribute('lat')),
+      parseFloat(p.getAttribute('lon')),
+    ])
+  }
+  return points.map((p) => [parseFloat(p.getAttribute('lat')), parseFloat(p.getAttribute('lon'))])
+}
+
+const clearGpx = () => {
+  if (gpxLayer) {
+    gpxLayer.remove()
+    gpxLayer = null
+  }
+}
+
+watch(
+  () => props.gpx,
+  async (gpx) => {
+    clearGpx()
+    if (!map || !gpx?.url) return
+    const resolved = gpxUrls[gpx.url] ?? gpx.url
+    const res = await fetch(resolved)
+    if (!res.ok) return
+    const coords = parseGpx(await res.text())
+    if (!coords.length) return
+    gpxLayer = L.polyline(coords, { color: '#dc2626', weight: 4, opacity: 0.85 }).addTo(map)
+    map.fitBounds(gpxLayer.getBounds(), { padding: [40, 40] })
   },
 )
 

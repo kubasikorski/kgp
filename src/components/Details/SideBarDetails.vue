@@ -5,8 +5,9 @@ import { usePeaksStore } from '@/stores/peaks'
 
 const props = defineProps({
   peak: { type: Object, required: true },
+  selectedGpx: { type: Object, default: null },
 })
-const emit = defineEmits(['close', 'focus-poi'])
+const emit = defineEmits(['close', 'focus-poi', 'select-gpx'])
 
 const store = usePeaksStore()
 
@@ -17,6 +18,8 @@ const formattedDate = computed(() => {
 })
 
 const parkings = computed(() => (props.peak.poi ?? []).filter((p) => p.type === 'parking'))
+
+const gpxFiles = computed(() => props.peak?.gpx ?? [])
 
 const today = () => new Date().toISOString().slice(0, 10)
 const picking = ref(false)
@@ -75,26 +78,7 @@ const cancelPicking = () => {
       </div>
     </dl>
   </div>
-  <template v-if="parkings.length">
-    <h3 class="text-lg font-semibold text-slate-900">Parkingi</h3>
-    <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
-      <ul class="mt-3 flex flex-col gap-3">
-        <li
-          v-for="(parking, index) in parkings"
-          :key="index"
-          class="cursor-pointer rounded-lg bg-white p-3 ring-1 ring-slate-200 transition hover:ring-emerald-400 hover:bg-emerald-50"
-          @click="emit('focus-poi', parking)"
-        >
-          <div class="flex items-start gap-2">
-            <div class="flex-1 text-sm text-slate-700">
-              <p v-if="parking.name" class="text-lg">{{ parking.name }}</p>
-              <p v-if="parking.description" class="pt-2">{{ parking.description }}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </template>
+
   <div class="mt-4">
     <div
       v-if="picking && !peak.conquered"
@@ -129,4 +113,45 @@ const cancelPicking = () => {
       {{ peak.conquered ? 'Cofnij zdobycie' : picking ? 'Potwierdź datę' : 'Oznacz jako zdobyty' }}
     </button>
   </div>
+
+  <template v-if="parkings.length">
+    <h3 class="text-lg font-semibold text-slate-900">Parkingi</h3>
+    <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
+      <ul class="mt-3 flex flex-col gap-3">
+        <li
+          v-for="(parking, index) in parkings"
+          :key="index"
+          class="cursor-pointer rounded-lg bg-white p-3 ring-1 ring-slate-200 transition hover:ring-emerald-400 hover:bg-emerald-50"
+          @click="emit('focus-poi', parking)"
+        >
+          <div class="flex items-start gap-2">
+            <div class="flex-1 text-sm text-slate-700">
+              <p v-if="parking.name" class="text-lg">{{ parking.name }}</p>
+              <p v-if="parking.description" class="pt-2">{{ parking.description }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </template>
+  <template v-if="gpxFiles.length">
+    <h3 class="text-lg font-semibold text-slate-900">Dostępne trasy</h3>
+    <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
+      <ul class="mt-3 flex flex-col gap-2">
+        <li
+          v-for="file in gpxFiles"
+          :key="file.url"
+          class="cursor-pointer rounded-lg p-3 ring-1 text-sm transition"
+          :class="
+            selectedGpx?.url === file.url
+              ? 'bg-emerald-50 ring-emerald-400 text-emerald-800'
+              : 'bg-white ring-slate-200 text-slate-700 hover:ring-emerald-400 hover:bg-emerald-50'
+          "
+          @click="emit('select-gpx', selectedGpx?.url === file.url ? null : file)"
+        >
+          {{ file.name }}
+        </li>
+      </ul>
+    </div>
+  </template>
 </template>
