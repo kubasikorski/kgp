@@ -525,6 +525,13 @@
         "trailTime": "3:20h",
         "difficulty": 1
       }
+    ],
+    "poi": [
+      {
+        "type": "parking",
+        "name": "Przełęcz Tąpadła",
+        "coords": [50.84540283739582, 16.69840956198017]
+      }
     ]
   },
   {

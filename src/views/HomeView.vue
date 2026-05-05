@@ -12,6 +12,7 @@ const peaks = computed(() =>
     ...peak,
     conquered: store.isConquered(peak.name),
     conqueredAt: store.conqueredAtFor(peak.name),
+    planned: store.isPlanned(peak.name),
   })),
 )
 

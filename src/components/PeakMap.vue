@@ -14,10 +14,16 @@ const markersByName = new Map()
 let map
 let allBounds
 
-const peakIcon = (conquered) =>
+const peakStateClass = (peak) => {
+  if (peak.conquered) return 'peak-pin--conquered'
+  if (peak.planned) return 'peak-pin--planned'
+  return 'peak-pin--pending'
+}
+
+const peakIcon = (peak) =>
   L.divIcon({
     className: 'peak-marker',
-    html: `<span class="peak-pin ${conquered ? 'peak-pin--conquered' : 'peak-pin--pending'}"></span>`,
+    html: `<span class="peak-pin ${peakStateClass(peak)}"></span>`,
     iconSize: [18, 18],
     iconAnchor: [9, 9],
     popupAnchor: [0, -9],
@@ -31,7 +37,7 @@ onMounted(() => {
   }).addTo(map)
 
   const markers = props.peaks.map((peak) => {
-    const marker = L.marker(peak.coords, { icon: peakIcon(peak.conquered) })
+    const marker = L.marker(peak.coords, { icon: peakIcon(peak) })
       .addTo(map)
       .bindPopup(`<strong>${peak.name}</strong> (${peak.elevation} m)<br>${peak.range}`)
       .on('click', () => emit('select', peak))
@@ -57,11 +63,11 @@ watch(
 )
 
 watch(
-  () => props.peaks.map((p) => p.conquered),
+  () => props.peaks.map((p) => `${p.conquered ? 1 : 0}${p.planned ? 1 : 0}`),
   () => {
     if (!map) return
     for (const peak of props.peaks) {
-      markersByName.get(peak.name)?.setIcon(peakIcon(peak.conquered))
+      markersByName.get(peak.name)?.setIcon(peakIcon(peak))
     }
   },
 )
@@ -103,5 +109,8 @@ onBeforeUnmount(() => {
 }
 .peak-pin--conquered {
   background: #16a34a;
+}
+.peak-pin--planned {
+  background: #eab308;
 }
 </style>

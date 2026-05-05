@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import rawPeaks from '../data/korona-gor-polski.json'
 
 const STORAGE_KEY = 'kgp:conquered'
+const PLANNED_KEY = 'kgp:planned'
 
 const parseSeedDate = (value) => {
   if (!value) return new Date().toISOString()
@@ -33,8 +34,22 @@ const loadInitial = () => {
   return seedFromJson()
 }
 
+const loadPlanned = () => {
+  try {
+    const raw = localStorage.getItem(PLANNED_KEY)
+    if (raw) {
+      const parsed = JSON.parse(raw)
+      if (Array.isArray(parsed)) return parsed
+    }
+  } catch {
+    /* fall through */
+  }
+  return []
+}
+
 export const usePeaksStore = defineStore('peaks', () => {
   const conqueredAt = ref(loadInitial())
+  const planned = ref(loadPlanned())
 
   watch(
     conqueredAt,
@@ -44,8 +59,17 @@ export const usePeaksStore = defineStore('peaks', () => {
     { deep: true },
   )
 
+  watch(
+    planned,
+    (value) => {
+      localStorage.setItem(PLANNED_KEY, JSON.stringify(value))
+    },
+    { deep: true },
+  )
+
   const isConquered = (name) => Boolean(conqueredAt.value[name])
   const conqueredAtFor = (name) => conqueredAt.value[name] ?? null
+  const isPlanned = (name) => planned.value.includes(name)
 
   const toggle = (name, date) => {
     const next = { ...conqueredAt.value }
@@ -54,9 +78,26 @@ export const usePeaksStore = defineStore('peaks', () => {
     } else {
       const parsed = date ? new Date(date) : new Date()
       next[name] = (Number.isNaN(parsed.getTime()) ? new Date() : parsed).toISOString()
+      if (planned.value.includes(name)) {
+        planned.value = planned.value.filter((n) => n !== name)
+      }
     }
     conqueredAt.value = next
   }
 
-  return { conqueredAt, isConquered, conqueredAtFor, toggle }
+  const togglePlanned = (name) => {
+    planned.value = planned.value.includes(name)
+      ? planned.value.filter((n) => n !== name)
+      : [...planned.value, name]
+  }
+
+  return {
+    conqueredAt,
+    planned,
+    isConquered,
+    conqueredAtFor,
+    isPlanned,
+    toggle,
+    togglePlanned,
+  }
 })

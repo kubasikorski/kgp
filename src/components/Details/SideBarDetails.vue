@@ -12,6 +12,8 @@ const emit = defineEmits(['close', 'focus-poi', 'select-gpx'])
 
 const store = usePeaksStore()
 
+const isPlanned = computed(() => store.isPlanned(props.peak.name))
+
 const formattedDate = computed(() => {
   if (!props.peak.conqueredAt) return null
   const d = new Date(props.peak.conqueredAt)
@@ -50,6 +52,10 @@ const onPrimary = () => {
 
 const cancelPicking = () => {
   picking.value = false
+}
+
+const togglePlanned = () => {
+  store.togglePlanned(props.peak.name)
 }
 </script>
 
@@ -103,19 +109,34 @@ const cancelPicking = () => {
         Anuluj
       </button>
     </div>
-    <button
-      type="button"
-      class="w-full rounded-lg px-3 py-2 text-sm font-medium transition"
-      :class="
-        peak.conquered
-          ? 'bg-rose-50 text-rose-700 ring-1 ring-rose-200 hover:bg-rose-100'
-          : 'bg-emerald-600 text-white hover:bg-emerald-700'
-      "
-      :disabled="picking && !pickedDate"
-      @click="onPrimary"
-    >
-      {{ peak.conquered ? 'Cofnij zdobycie' : picking ? 'Potwierdź datę' : 'Oznacz jako zdobyty' }}
-    </button>
+    <div class="flex gap-2">
+      <button
+        type="button"
+        class="flex-1 rounded-lg px-3 py-2 text-sm font-medium transition"
+        :class="
+          peak.conquered
+            ? 'bg-rose-50 text-rose-700 ring-1 ring-rose-200 hover:bg-rose-100'
+            : 'bg-emerald-600 text-white hover:bg-emerald-700'
+        "
+        :disabled="picking && !pickedDate"
+        @click="onPrimary"
+      >
+        {{ peak.conquered ? 'Cofnij zdobycie' : picking ? 'Potwierdź datę' : 'Oznacz jako zdobyty' }}
+      </button>
+      <button
+        v-if="!peak.conquered"
+        type="button"
+        class="flex-1 rounded-lg px-3 py-2 text-sm font-medium transition ring-1"
+        :class="
+          isPlanned
+            ? 'bg-amber-100 text-amber-800 ring-amber-300 hover:bg-amber-200'
+            : 'bg-white text-amber-700 ring-amber-200 hover:bg-amber-50'
+        "
+        @click="togglePlanned"
+      >
+        {{ isPlanned ? 'Zaplanowane' : 'Zaplanuj' }}
+      </button>
+    </div>
   </div>
 
   <template v-if="parkings.length">
