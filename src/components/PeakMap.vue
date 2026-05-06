@@ -14,19 +14,41 @@ const markersByName = new Map()
 let map
 let allBounds
 
-const peakStateClass = (peak) => {
-  if (peak.conquered) return 'peak-pin--conquered'
-  if (peak.planned) return 'peak-pin--planned'
-  return 'peak-pin--pending'
+const peakState = (peak) => {
+  if (peak.conquered) return 'conquered'
+  if (peak.planned) return 'planned'
+  return 'pending'
+}
+
+const PIN_GRADIENTS = {
+  pending: ['#F87171', '#7F1D1D'],
+  conquered: ['#45D1BB', '#0E6E6F'],
+  planned: ['#FBBF24', '#92400E'],
+}
+
+const peakSvg = (state) => {
+  const [from, to] = PIN_GRADIENTS[state]
+  const id = `fassPin-${state}`
+  return `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Peak">
+  <defs>
+    <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="${from}"></stop>
+      <stop offset="100%" stop-color="${to}"></stop>
+    </linearGradient>
+  </defs>
+  <path d="M32 60 L17 33.5 A18 18 0 1 1 47 33.5 Z" fill="url(#${id})"></path>
+  <path d="M20 30 L25 23 L28 26 L33 15 L39 23 L42 20 L44 30 Z" fill="#FFFFFF"></path>
+</svg>`
 }
 
 const peakIcon = (peak) =>
   L.divIcon({
     className: 'peak-marker',
-    html: `<span class="peak-pin ${peakStateClass(peak)}"></span>`,
-    iconSize: [18, 18],
-    iconAnchor: [9, 9],
-    popupAnchor: [0, -9],
+    html: `<span class="peak-pin">${peakSvg(peakState(peak))}</span>`,
+    iconSize: [92, 52],
+    iconAnchor: [26, 52],
+    popupAnchor: [0, -48],
   })
 
 const syncMarkers = (fitBounds) => {
@@ -61,7 +83,8 @@ const syncMarkers = (fitBounds) => {
 onMounted(() => {
   map = L.map(mapEl.value)
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19,
   }).addTo(map)
   syncMarkers(true)
@@ -85,8 +108,14 @@ watch(
   () => props.peaks.map((p) => `${p.name}:${p.conquered ? 1 : 0}${p.planned ? 1 : 0}`).join(),
   (next, prev) => {
     if (!map) return
-    const prevNames = (prev ?? '').split(',').map((s) => s.split(':')[0]).join()
-    const nextNames = next.split(',').map((s) => s.split(':')[0]).join()
+    const prevNames = (prev ?? '')
+      .split(',')
+      .map((s) => s.split(':')[0])
+      .join()
+    const nextNames = next
+      .split(',')
+      .map((s) => s.split(':')[0])
+      .join()
     syncMarkers(prevNames !== nextNames)
   },
 )
@@ -103,7 +132,7 @@ onBeforeUnmount(() => {
       href="https://kgp.info.pl/"
       target="_blank"
       rel="noopener"
-      class="absolute top-3 left-3 z-[1000] rounded-lg  p-2 shadow-md ring-1 ring-slate-200 backdrop-blur transition hover:bg-white"
+      class="absolute top-3 left-3 z-[1000] rounded-lg p-2 shadow-md ring-1 ring-slate-200 backdrop-blur transition hover:bg-white"
     >
       <img
         src="https://kgp.info.pl/wp-content/themes/korona/dist/images/logo_d3781823.png"
@@ -115,21 +144,17 @@ onBeforeUnmount(() => {
 </template>
 
 <style>
+.leaflet-tile-pane {
+  filter: saturate(0.55) contrast(0.65) brightness(1.05);
+}
 .peak-pin {
   display: block;
-  width: 18px;
-  height: 18px;
-  border-radius: 9999px;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  width: 52px;
+  height: 52px;
 }
-.peak-pin--pending {
-  background: #ef4444;
-}
-.peak-pin--conquered {
-  background: #16a34a;
-}
-.peak-pin--planned {
-  background: #eab308;
+.peak-pin svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
