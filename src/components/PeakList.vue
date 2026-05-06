@@ -26,10 +26,10 @@ const dotClass = (peak) => {
 
 <template>
   <div class="flex flex-col gap-2">
-    <div class="flex gap-1 rounded-lg bg-slate-100 p-1 text-xs font-medium">
+    <div class="flex gap-1 rounded-lg bg-slate-100 p-2 text-xs font-medium">
       <button
         type="button"
-        class="flex-1 rounded-md px-2 py-1 transition"
+        class="flex-1 rounded-md px-2 py-2 transition"
         :class="filter === 'all' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
         @click="setFilter('all')"
       >
@@ -37,7 +37,7 @@ const dotClass = (peak) => {
       </button>
       <button
         type="button"
-        class="flex-1 rounded-md px-2 py-1 transition"
+        class="flex-1 rounded-md px-2 py-2 transition"
         :class="filter === 'conquered' ? 'bg-white text-emerald-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
         @click="setFilter('conquered')"
       >
@@ -45,7 +45,7 @@ const dotClass = (peak) => {
       </button>
       <button
         type="button"
-        class="flex-1 rounded-md px-2 py-1 transition"
+        class="flex-1 rounded-md px-2 py-2 transition"
         :class="filter === 'planned' ? 'bg-white text-amber-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'"
         @click="setFilter('planned')"
       >
@@ -53,7 +53,7 @@ const dotClass = (peak) => {
       </button>
     </div>
     <ul
-      class="flex flex-col divide-y divide-slate-100 overflow-y-auto rounded-xl ring-1 ring-slate-200"
+      class="flex flex-col divide-y divide-slate-100 overflow-y-auto rounded-xl ring-1 ring-slate-200 mt-2"
     >
       <li
         v-for="peak in peaks"

@@ -1,8 +1,9 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
 import { usePeaksStore } from '@/stores/peaks'
-import ElevationChart from '@/components/Details/ElevationChart.vue'
+import PoiList from '@/components/Details/PoiList.vue'
+import StampList from '@/components/Details/StampList.vue'
+import RouteList from '@/components/Details/RouteList.vue'
 
 const props = defineProps({
   peak: { type: Object, required: true },
@@ -20,9 +21,26 @@ const formattedDate = computed(() => {
   return Number.isNaN(d.getTime()) ? props.peak.conqueredAt : d.toLocaleDateString('pl-PL')
 })
 
-const parkings = computed(() => (props.peak.poi ?? []).filter((p) => p.type === 'parking'))
+const poilist = computed(() => props.peak.poi ?? [])
+
+const stamps = computed(() => props.peak.stamps ?? [])
 
 const gpxFiles = computed(() => props.peak?.gpx ?? [])
+
+const tabs = computed(() => [
+  { id: 'routes', label: 'Trasy', count: gpxFiles.value.length },
+  { id: 'poi', label: 'POI', count: poilist.value.length },
+  { id: 'stamps', label: 'Pieczątki', count: stamps.value.length },
+])
+
+const activeTab = ref('routes')
+
+watch(
+  () => props.peak.slug,
+  () => {
+    activeTab.value = 'routes'
+  },
+)
 
 const today = () => new Date().toISOString().slice(0, 10)
 const picking = ref(false)
@@ -89,7 +107,7 @@ const togglePlanned = () => {
     </dl>
   </div>
 
-  <div class="mt-4">
+  <div>
     <div
       v-if="picking && !peak.conquered"
       class="mb-3 rounded-lg bg-slate-50 p-3 ring-1 ring-slate-200"
@@ -121,7 +139,9 @@ const togglePlanned = () => {
         :disabled="picking && !pickedDate"
         @click="onPrimary"
       >
-        {{ peak.conquered ? 'Cofnij zdobycie' : picking ? 'Potwierdź datę' : 'Oznacz jako zdobyty' }}
+        {{
+          peak.conquered ? 'Cofnij zdobycie' : picking ? 'Potwierdź datę' : 'Oznacz jako zdobyty'
+        }}
       </button>
       <button
         v-if="!peak.conquered"
@@ -139,86 +159,43 @@ const togglePlanned = () => {
     </div>
   </div>
 
-  <template v-if="parkings.length">
-    <h3 class="text-lg font-semibold text-slate-900">Parkingi</h3>
-    <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
-      <ul class="mt-3 flex flex-col gap-3">
-        <li
-          v-for="(parking, index) in parkings"
-          :key="index"
-          class="cursor-pointer rounded-lg bg-white p-3 ring-1 ring-slate-200 transition hover:ring-emerald-400 hover:bg-emerald-50"
-          @click="emit('focus-poi', parking)"
+  <div class="mt-4">
+    <div class="flex gap-1 border-b border-slate-200">
+      <button
+        v-for="tab in tabs"
+        :key="tab.id"
+        type="button"
+        class="px-3 py-2 text-sm font-medium transition border-b-2 -mb-px"
+        :class="
+          activeTab === tab.id
+            ? 'border-emerald-600 text-emerald-700'
+            : 'border-transparent text-slate-500 hover:text-slate-700'
+        "
+        @click="activeTab = tab.id"
+      >
+        {{ tab.label }}
+        <span
+          v-if="tab.count"
+          class="ml-1 rounded-full bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600"
+          >{{ tab.count }}</span
         >
-          <div class="flex items-start gap-2">
-            <div class="flex-1 text-sm text-slate-700">
-              <p v-if="parking.name" class="text-lg">{{ parking.name }}</p>
-              <p v-if="parking.description" class="pt-2">{{ parking.description }}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
+      </button>
     </div>
-  </template>
-  <template v-if="gpxFiles.length">
-    <h3 class="text-lg font-semibold text-slate-900">Dostępne trasy</h3>
-    <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
-      <ul class="mt-3 flex flex-col gap-2">
-        <li
-          v-for="file in gpxFiles"
-          :key="file.url"
-          class="cursor-pointer rounded-lg p-3 ring-1 text-sm transition"
-          :class="
-            selectedGpx?.url === file.url
-              ? 'bg-emerald-50 ring-emerald-400 text-emerald-800'
-              : 'bg-white ring-slate-200 text-slate-700 hover:ring-emerald-400 hover:bg-emerald-50'
-          "
-          @click="emit('select-gpx', selectedGpx?.url === file.url ? null : file)"
-        >
-          <div class="flex items-start gap-2">
-            <div class="flex-1">
-              <p>{{ file.name }}</p>
-              <dl
-                v-if="file.trailDist != null || file.trailTime"
-                class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500"
-              >
-                <div v-if="file.trailDist != null" class="flex gap-1">
-                  <dt>Dystans:</dt>
-                  <dd class="text-slate-700">{{ file.trailDist }} km</dd>
-                </div>
-                <div v-if="file.trailTime" class="flex gap-1">
-                  <dt>Czas:</dt>
-                  <dd class="text-slate-700">{{ file.trailTime }}</dd>
-                </div>
-              </dl>
-            </div>
-            <a
-              v-if="file.mapaUrl"
-              :href="file.mapaUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="shrink-0 rounded-md p-1 text-slate-500 hover:bg-emerald-100 hover:text-emerald-700"
-              title="Otwórz na mapie"
-              @click.stop
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-5 w-5"
-              >
-                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6" />
-                <line x1="9" y1="3" x2="9" y2="18" />
-                <line x1="15" y1="6" x2="15" y2="21" />
-              </svg>
-            </a>
-          </div>
-        </li>
-      </ul>
+
+    <div class="pt-4">
+      <div v-show="activeTab === 'routes'">
+        <RouteList
+          :gpx-files="gpxFiles"
+          :selected-gpx="selectedGpx"
+          @select-gpx="emit('select-gpx', $event)"
+        />
+      </div>
+      <div v-show="activeTab === 'poi'">
+        <PoiList :poi="poilist" @focus-poi="emit('focus-poi', $event)" />
+      </div>
+      <div v-show="activeTab === 'stamps'">
+        <StampList :stamps="stamps" />
+      </div>
     </div>
-    <ElevationChart v-if="selectedGpx" :gpx="selectedGpx" />
-  </template>
+  </div>
 </template>

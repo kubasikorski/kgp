@@ -126,9 +126,7 @@ const onImportFile = async (event) => {
     </header>
 
     <SideBarPeakDetails v-if="selected" :peak="selected" @close="$emit('close')" />
-    <p v-else class="rounded-xl bg-slate-50 p-4 text-sm text-slate-500 ring-1 ring-slate-200">
-      Kliknij szczyt na mapie, aby zobaczyć szczegóły.
-    </p>
+
 
     <PeakList
       class="hidden md:block"

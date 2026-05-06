@@ -76,7 +76,7 @@ watch(
       </div>
     </dl>
   </div>
-  <div class="mt-4">
+  <div>
     <RouterLink
       :to="{ name: 'peak-details', params: { peak_slug: peak.slug } }"
       class="block w-full rounded-lg px-3 py-2 text-center text-sm font-medium transition bg-emerald-600 text-white hover:bg-emerald-700"

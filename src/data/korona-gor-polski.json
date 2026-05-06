@@ -325,6 +325,25 @@
         "type": "parking",
         "name": "Parking przy Spalonej Drodze",
         "coords": [50.2766556, 16.5367636]
+      },
+      {
+        "type": "stamp",
+        "name": "Pijalnia Wód w Długopolu-Zdroju",
+        "coords": [50.245265986832074, 16.6318087814528]
+      }
+    ],
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka pod wiatką (montaż: 24.01.2026)"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Jagodna na Przełęczy Spalona"
+      },
+      {
+        "type": "poi",
+        "description": "Pijalnia Wód w Długopolu-Zdroju"
       }
     ]
   },

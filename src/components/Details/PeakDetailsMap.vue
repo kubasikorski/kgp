@@ -55,8 +55,13 @@ const peakIcon = (conquered) =>
     popupAnchor: [0, -48],
   })
 
+const POI_LABELS = {
+  parking: { short: 'P', long: 'Parking' },
+  stamp: { short: 'S', long: 'Pieczątka' },
+}
+
 const poiIcon = (type) => {
-  const label = type === 'parking' ? 'P' : '?'
+  const label = POI_LABELS[type]?.short ?? '?'
   return L.divIcon({
     className: 'poi-marker',
     html: `<span class="poi-pin poi-pin--${type}">${label}</span>`,
@@ -66,7 +71,7 @@ const poiIcon = (type) => {
   })
 }
 
-const poiLabel = (type) => (type === 'parking' ? 'Parking' : type)
+const poiLabel = (type) => POI_LABELS[type]?.long ?? type
 
 const render = () => {
   if (!map) return
@@ -201,5 +206,8 @@ onBeforeUnmount(() => {
 }
 .poi-pin--parking {
   background: #2563eb;
+}
+.poi-pin--stamp {
+  background: #d97706;
 }
 </style>
