@@ -38,8 +38,31 @@ const onSelectGpx = (gpx) => {
 
 <template>
   <main
-    class="grid h-screen w-screen grid-rows-[2fr_1fr] gap-4 bg-slate-100 p-4 md:grid-cols-[3fr_1fr] md:grid-rows-1"
+    class="grid h-screen w-screen grid-rows-[auto_40vh_1fr] gap-4 bg-slate-100 p-4 md:grid-cols-[3fr_1fr] md:grid-rows-1"
   >
+    <header
+      v-if="peak"
+      class="flex items-center justify-between gap-3 md:hidden"
+    >
+      <h1 class="text-xl font-semibold text-slate-900">{{ peak.name }}</h1>
+      <RouterLink
+        :to="{ name: 'home' }"
+        class="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1.5 text-sm font-medium text-slate-600 ring-1 ring-slate-200 transition hover:bg-slate-100 hover:text-slate-900"
+      >
+        <svg
+          viewBox="0 0 20 20"
+          class="h-3.5 w-3.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 5l-6 5 6 5" />
+        </svg>
+        Powrót
+      </RouterLink>
+    </header>
     <PeakDetailsMap
       v-if="peak"
       :peak="peak"
@@ -51,7 +74,7 @@ const onSelectGpx = (gpx) => {
     <aside
       class="flex flex-col gap-4 overflow-y-auto rounded-2xl bg-white p-6 shadow-lg ring-1 ring-slate-200"
     >
-      <header class="flex items-center justify-between gap-3">
+      <header class="hidden items-center justify-between gap-3 md:flex">
         <h1 class="text-xl font-semibold text-slate-900">{{ peak.name }}</h1>
         <RouterLink
           :to="{ name: 'home' }"

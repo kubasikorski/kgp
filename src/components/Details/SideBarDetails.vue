@@ -82,7 +82,7 @@ const togglePlanned = () => {
     <p class="text-slate-800">{{ peak.description }}</p>
   </div>
   <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
-    <dl class="mt-3 space-y-1 text-sm">
+    <dl class="space-y-1 text-sm">
       <div class="flex justify-between pb-4">
         <dt class="text-slate-500">Status</dt>
         <dd

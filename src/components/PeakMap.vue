@@ -128,18 +128,6 @@ onBeforeUnmount(() => {
 <template>
   <section class="relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
     <div ref="mapEl" class="h-full w-full"></div>
-    <a
-      href="https://kgp.info.pl/"
-      target="_blank"
-      rel="noopener"
-      class="absolute top-3 left-3 z-[1000] rounded-lg p-2 shadow-md ring-1 ring-slate-200 backdrop-blur transition hover:bg-white"
-    >
-      <img
-        src="https://kgp.info.pl/wp-content/themes/korona/dist/images/logo_d3781823.png"
-        alt="Korona Gór Polski"
-        class="2xl:h-32 h-16 w-auto"
-      />
-    </a>
   </section>
 </template>
 
