@@ -16,6 +16,7 @@ const peak = computed(() => {
     ...found,
     conquered: store.isConquered(found.slug),
     conqueredAt: store.conqueredAtFor(found.slug),
+    planned: store.isPlanned(found.slug),
   }
 })
 

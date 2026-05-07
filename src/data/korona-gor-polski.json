@@ -14,7 +14,71 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/rysy/",
     "coords": [49.1795474, 20.0880652],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Brak pieczątki na szczycie — potwierdzenie zbiera się w schroniskach u podnóża lub po stronie słowackiej",
+        "color": "red"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK przy Morskim Oku"
+      },
+      {
+        "type": "poi",
+        "description": "Chata pod Rysmi (strona słowacka)"
+      },
+      {
+        "type": "poi",
+        "description": "Majláthova Chata nad Popradskim Plesem (strona słowacka)"
+      },
+      {
+        "type": "poi",
+        "description": "Horský Hotel Popradské Pleso (strona słowacka)"
+      },
+      {
+        "type": "poi",
+        "description": "Kasa biletowa TPN w Palenicy Białczańskiej"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK im. W. Pola w Dolinie Roztoki"
+      },
+      {
+        "type": "poi",
+        "description": "Dróżnicówka — Punkt Informacyjny na szlaku do Morskiego Oka przed Wodogrzmotami Mickiewicza"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Palenica Białczańska → Palenica",
+        "url": "/src/data/gpx/rysy/route-r17n.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/r17n",
+        "trailStart": "Palenica Białczańska",
+        "trailDist": 25.5,
+        "trailTime": "11:46h",
+        "difficulty": 1
+      },
+      {
+        "name": "Popradské pleso → Popradské pleso",
+        "url": "/src/data/gpx/rysy/route-a3ec.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/a3ec",
+        "trailStart": "Popradské pleso",
+        "trailDist": 11.5,
+        "trailTime": "6:13h",
+        "difficulty": 1
+      },
+      {
+        "name": "Palenica Białczańska (wariant)",
+        "url": "/src/data/gpx/rysy/route-h8uu.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8uu",
+        "trailStart": "Palenica Białczańska",
+        "trailDist": 29.6,
+        "trailTime": "14:05h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Babia Góra",
@@ -31,7 +95,91 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/babia-gora-2/",
     "coords": [49.5731582, 19.5308005],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Brak pieczątki na szczycie (teren BgPN)",
+        "color": "red"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Markowe Szczawiny"
+      },
+      {
+        "type": "poi",
+        "description": "Kasa przy wejściu do BgPN — Przełęcz Krowiarki"
+      },
+      {
+        "type": "poi",
+        "description": "Kasa przy wejściu do BgPN — Zawoja Markowa"
+      },
+      {
+        "type": "poi",
+        "description": "Ośrodek Edukacyjny Babiogórskiego Parku Narodowego (aż 9 różnych pieczątek)"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum — Orawski Park Etnograficzny w Zubrzycy Górnej"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Slaná Voda (strona słowacka)"
+      },
+      {
+        "type": "poi",
+        "description": "Skansen — Muzeum Kultury Ludowej w Sidzinie"
+      },
+      {
+        "type": "poi",
+        "description": "Gminna Biblioteka Publiczna — Punkt Informacji Turystycznej, Lipnica Wielka 518"
+      },
+      {
+        "type": "poi",
+        "description": "Gminna Informacja Turystyczna — Zawoja Wilczna"
+      },
+      {
+        "type": "poi",
+        "description": "Siedlisko Babia Góra — Zawoja 2525"
+      },
+      {
+        "type": "poi",
+        "description": "Polana Stańcowa Górska Chata, Lipnica Wielka 1168A"
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna i Przyrodnicza BgPN, Lipnica Wielka 1167"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Przełęcz Krowiarki → Przełęcz Krowiarki",
+        "url": "/src/data/gpx/babia-gora/route-c25d.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/c25d",
+        "trailStart": "Prz. Krowiarki",
+        "trailDist": 12.0,
+        "trailTime": "4:24h",
+        "difficulty": 1
+      },
+      {
+        "name": "Zawoja, Lajkonik → Zawoja",
+        "url": "/src/data/gpx/babia-gora/route-h8uj.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8uj",
+        "trailStart": "Zawoja, Lajkonik",
+        "trailDist": 21.8,
+        "trailTime": "8:02h",
+        "difficulty": 1
+      },
+      {
+        "name": "Zawoja, Policzne → Zawoja",
+        "url": "/src/data/gpx/babia-gora/route-s96s.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/s96s",
+        "trailStart": "Zawoja, Policzne",
+        "trailDist": 16.9,
+        "trailTime": "6:48h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Śnieżka",
@@ -48,7 +196,94 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/sniezka-2/",
     "coords": [50.7360141, 15.7399485],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — dwie: pawilon Czeskiej Poczty oraz bar przy wyciągu"
+      },
+      {
+        "type": "poi",
+        "description": "Dom Śląski (Górský dům) — schronisko pod szczytem"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko Na Przełęczy Okraj"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Strzecha Akademicka"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Samotnia"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Nad Łomniczką"
+      },
+      {
+        "type": "poi",
+        "description": "Bouda Jelenka (strona czeska, szlak od Przełęczy Okraj)"
+      },
+      {
+        "type": "poi",
+        "description": "Skocznia Narciarska Orlinek w Karpaczu"
+      },
+      {
+        "type": "poi",
+        "description": "Kopa — górna stacja kolei liniowej, punkt gastronomiczny"
+      },
+      {
+        "type": "poi",
+        "description": "Punkt biletowy Karkonoskiego Parku Narodowego w Karpaczu"
+      },
+      {
+        "type": "poi",
+        "description": "Centrum Informacyjne KPN, ul. Leśna 9, Karpacz (wt.–sob. 9:00–16:00)"
+      },
+      {
+        "type": "poi",
+        "description": "Kościół ewangelicki WANG — przy wejściu na szlak"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum Sportu i Turystyki w Karpaczu"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Górska Sklep Regionalny w Karpaczu, ul. Konstytucji 3 Maja 72A (wejście od ul. Mickiewicza 8)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Karpacz → Karpacz",
+        "url": "/src/data/gpx/sniezka/route-79xm.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/79xm",
+        "trailStart": "Karpacz",
+        "trailDist": 20.5,
+        "trailTime": "7:10h",
+        "difficulty": 1
+      },
+      {
+        "name": "Świątynia Wang → Świątynia Wang",
+        "url": "/src/data/gpx/sniezka/route-okoq.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/okoq",
+        "trailStart": "Świątynia Wang",
+        "trailDist": 16.8,
+        "trailTime": "5:43h",
+        "difficulty": 1
+      },
+      {
+        "name": "Pec pod Sněžkou → Pec pod Sněžkou",
+        "url": "/src/data/gpx/sniezka/route-wwft.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/wwft",
+        "trailStart": "Pec pod Sněžkou",
+        "trailDist": 13.4,
+        "trailTime": "4:54h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Śnieżnik",
@@ -73,6 +308,73 @@
         "name": "Parking Międzygórze",
         "description": "Idealne miejsce wypadowe na szlak na Śnieżnik. Jest tu wystarczająco dużo miejsca do bezpłatnego parkowania. Dostępny jest tutaj schron i kilka stołów. Można tu również przenocować w samochodzie lub przyczepie kempingowej."
       }
+    ],
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Skrzyneczka na szczycie bywa niszczona — pieczątka ze szczytu jest aktualnie zniesiona do schroniska"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Na Śnieżniku im. Zbigniewa Fastnachta (tu również pieczątka zniesiona ze szczytu)"
+      },
+      {
+        "type": "poi",
+        "description": "Oddział PTTK im. dra M. Orłowicza w Międzygórzu, ul. Wojska Polskiego 2 (skrzyneczka na zewnątrz)"
+      },
+      {
+        "type": "poi",
+        "description": "Dom nad Wodospadem w Międzygórzu, ul. Wojska Polskiego 12 (recepcja)"
+      },
+      {
+        "type": "poi",
+        "description": "Jaskinia Niedźwiedzia w Kletnie (na szlaku z Kletna na Śnieżnik)"
+      },
+      {
+        "type": "poi",
+        "description": "Ośrodek Wypoczynkowy „Sabat\" — Dworek Myśliwski Księżnej Orańskiej, ul. Wojska Polskiego 6, Międzygórze"
+      },
+      {
+        "type": "poi",
+        "description": "Kopalnia Uranu Kletno — Podziemna Trasa Turystyczno-Edukacyjna"
+      },
+      {
+        "type": "poi",
+        "description": "Centrum Edukacji, Turystyki i Kultury, ul. Kościuszki 18, Stronie Śląskie"
+      },
+      {
+        "type": "poi",
+        "description": "Horská chata Návrší, Stříbrnice — Staré Město pod Sněžníkem (strona czeska)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Międzygórze → Międzygórze",
+        "url": "/src/data/gpx/snieznik/route-ipz.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ipz",
+        "trailStart": "Międzygórze",
+        "trailDist": 18.0,
+        "trailTime": "6:02h",
+        "difficulty": 1
+      },
+      {
+        "name": "Kletno → Kletno",
+        "url": "/src/data/gpx/snieznik/route-5aix.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/5aix",
+        "trailStart": "Kletno",
+        "trailDist": 17.0,
+        "trailTime": "5:37h",
+        "difficulty": 1
+      },
+      {
+        "name": "Bolesławów → Bolesławów",
+        "url": "/src/data/gpx/snieznik/route-zheu.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/zheu",
+        "trailStart": "Bolesławów",
+        "trailDist": 22.5,
+        "trailTime": "7:11h",
+        "difficulty": 1
+      }
     ]
   },
   {
@@ -90,7 +392,103 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/tarnica-2/",
     "coords": [49.0745824, 22.7262496],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Brak pieczątki na szczycie (teren BdPN)",
+        "color": "red"
+      },
+      {
+        "type": "poi",
+        "description": "Punkt informacyjno-kasowy BdPN w Wołosatem"
+      },
+      {
+        "type": "poi",
+        "description": "Punkt informacyjno-kasowy BdPN w Ustrzykach Górnych — Terebowiec"
+      },
+      {
+        "type": "poi",
+        "description": "Punkt informacyjno-kasowy w Mucznem"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Kremenaros, Ustrzyki Górne"
+      },
+      {
+        "type": "poi",
+        "description": "Hotel Górski PTTK w Ustrzykach Górnych"
+      },
+      {
+        "type": "poi",
+        "description": "Zajazd Pod Caryńską, Ustrzyki Górne"
+      },
+      {
+        "type": "poi",
+        "description": "Centrum Promocji Leśnictwa w Mucznem"
+      },
+      {
+        "type": "poi",
+        "description": "Dyrekcja Bieszczadzkiego Parku Narodowego w Ustrzykach Górnych"
+      },
+      {
+        "type": "poi",
+        "description": "Goprówka w Ustrzykach Górnych"
+      },
+      {
+        "type": "poi",
+        "description": "Pizzeria „W górach\", Wołosate (zamknięta w sezonie zimowym)"
+      },
+      {
+        "type": "poi",
+        "description": "Parking płatny w Wołosatem przy sklepie „Ostatni na Szlaku\""
+      },
+      {
+        "type": "poi",
+        "description": "Sklep „Ostatni na Szlaku\" w Wołosatem"
+      },
+      {
+        "type": "poi",
+        "description": "BdPN Terenowa Stacja Edukacji Ekologicznej, Wołosate 7"
+      },
+      {
+        "type": "poi",
+        "description": "„Bieszczadzka Legenda\" w Wetlinie"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko „Pod Wysoką Połoniną\" w Wetlinie (2 pieczątki)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Wołosate → Wołosate",
+        "url": "/src/data/gpx/tarnica/route-1uk.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/1uk",
+        "trailStart": "Wołosate",
+        "trailDist": 19.1,
+        "trailTime": "6:10h",
+        "difficulty": 1
+      },
+      {
+        "name": "Ustrzyki Górne → Ustrzyki Górne",
+        "url": "/src/data/gpx/tarnica/route-3bdc.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/3bdc",
+        "trailStart": "Ustrzyki Górne",
+        "trailDist": 18.6,
+        "trailTime": "5:57h",
+        "difficulty": 1
+      },
+      {
+        "name": "Muczne → Muczne",
+        "url": "/src/data/gpx/tarnica/route-kmih.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/kmih",
+        "trailStart": "Muczne",
+        "trailDist": 16.5,
+        "trailTime": "5:55h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Turbacz",
@@ -107,7 +505,67 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/turbacz-2/",
     "coords": [49.5428665, 20.1113317],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Brak bezpośrednio na szczycie (teren GPN)",
+        "color": "red"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK im. Władysława Orkana na Turbaczu (ok. 10 min od szczytu)"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Stare Wierchy"
+      },
+      {
+        "type": "poi",
+        "description": "Kasa biletowa Gorczańskiego Parku Narodowego (pieczątka z salamandrą)"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep spożywczy przy przystanku autobusowym Nowy Targ Kowaniec"
+      },
+      {
+        "type": "poi",
+        "description": "Ostoja Górska Koninki"
+      },
+      {
+        "type": "poi",
+        "description": "Kaplica pw. Matki Boskiej Królowej Gorców na Polanie Rusnakowej"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Nowy Targ, Oleksówki → Nowy Targ",
+        "url": "/src/data/gpx/turbacz/route-yew1.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/yew1",
+        "trailStart": "Nowy Targ, Oleksówki",
+        "trailDist": 16.2,
+        "trailTime": "5:10h",
+        "difficulty": 1
+      },
+      {
+        "name": "Koninki → Koninki",
+        "url": "/src/data/gpx/turbacz/route-z4oh.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/z4oh",
+        "trailStart": "Koninki",
+        "trailDist": 18.3,
+        "trailTime": "6:13h",
+        "difficulty": 1
+      },
+      {
+        "name": "Łopuszna → Łopuszna",
+        "url": "/src/data/gpx/turbacz/route-r1t6.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/r1t6",
+        "trailStart": "Łopuszna",
+        "trailDist": 21.8,
+        "trailTime": "6:49h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Radziejowa",
@@ -124,7 +582,74 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/radziejowa-2/",
     "coords": [49.4493234, 20.604172],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK „Na Przehybie\""
+      },
+      {
+        "type": "poi",
+        "description": "Bacówka na Obidzy"
+      },
+      {
+        "type": "poi",
+        "description": "Zajazd PTTK Pod Roztoką, Rytro 186"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Magóry — kiosk gastronomiczny (sezonowa)"
+      },
+      {
+        "type": "poi",
+        "description": "SkiHotel***, Sucha Dolina 33, Piwniczna-Zdrój"
+      },
+      {
+        "type": "poi",
+        "description": "Urząd Gminy Rytro"
+      },
+      {
+        "type": "poi",
+        "description": "Restauracja Bacówka w Jaworkach"
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna w Piwnicznej-Zdroju, Rynek 11 (pon.–pt. 8:00–16:00)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Jaworki → Jaworki",
+        "url": "/src/data/gpx/radziejowa/route-slrm.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/slrm",
+        "trailStart": "Jaworki",
+        "trailDist": 27.7,
+        "trailTime": "9:13h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Gromadzka → Przełęcz Gromadzka",
+        "url": "/src/data/gpx/radziejowa/route-e4im.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/e4im",
+        "trailStart": "Prz. Gromadzka",
+        "trailDist": 9.0,
+        "trailTime": "3:02h",
+        "difficulty": 1
+      },
+      {
+        "name": "Piwniczna-Zdrój → Piwniczna-Zdrój",
+        "url": "/src/data/gpx/radziejowa/route-zlu0.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/zlu0",
+        "trailStart": "Piwniczna-Zdrój",
+        "trailDist": 24.3,
+        "trailTime": "7:57h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Skrzyczne",
@@ -141,7 +666,103 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/skrzyczne-2/",
     "coords": [49.6844291, 19.0301657],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Brak stałej klubowej skrzyneczki na samym szczycie",
+        "color": "red"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Skrzyczne"
+      },
+      {
+        "type": "poi",
+        "description": "Start Skrzyczne, ul. Skrzyczeńska 15 (obok schroniska PTTK)"
+      },
+      {
+        "type": "poi",
+        "description": "Wyciąg — Stacja Kolejki (2 pieczątki w kasie sklepu sportowego)"
+      },
+      {
+        "type": "poi",
+        "description": "Malinowska Skała — pieczątka w skrzyneczce (na szlaku)"
+      },
+      {
+        "type": "poi",
+        "description": "Staro Bacówka Hala Jaworzyna"
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna w Szczyrku"
+      },
+      {
+        "type": "poi",
+        "description": "GOPR w Szczyrku, ul. Dębowa 2"
+      },
+      {
+        "type": "poi",
+        "description": "Regionalny Zajazd Biały Krzyż — Przełęcz Salmopolska"
+      },
+      {
+        "type": "poi",
+        "description": "Gospoda „Na Przełęczy\", ul. Wiślańska 78, Szczyrk"
+      },
+      {
+        "type": "poi",
+        "description": "Szczyrk Mountain Resort, Salmopolska 53b"
+      },
+      {
+        "type": "poi",
+        "description": "Hotel Zimnik, ul. Jaski 14, Lipowa"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep „Pod Skrzycznem\", ul. Myśliwska 88B, Szczyrk"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep Turystyczny Agrafka w Szczyrku"
+      },
+      {
+        "type": "poi",
+        "description": "BeskidartS Przestrzeń Twórcza, ul. Myśliwska 34, Szczyrk"
+      },
+      {
+        "type": "poi",
+        "description": "Bator Art Gallery, ul. Myśliwska 60, Szczyrk"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Szczyrk → Szczyrk",
+        "url": "/src/data/gpx/skrzyczne/route-any.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/any",
+        "trailStart": "Szczyrk",
+        "trailDist": 11.4,
+        "trailTime": "4:08h",
+        "difficulty": 1
+      },
+      {
+        "name": "Szczyrk (wariant)",
+        "url": "/src/data/gpx/skrzyczne/route-h8qy.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8qy",
+        "trailStart": "Szczyrk",
+        "trailDist": 14.4,
+        "trailTime": "4:36h",
+        "difficulty": 1
+      },
+      {
+        "name": "Lipowa, Ostre → Lipowa",
+        "url": "/src/data/gpx/skrzyczne/route-cbx.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/cbx",
+        "trailStart": "Lipowa, Ostre",
+        "trailDist": 8.5,
+        "trailTime": "3:20h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Mogielica",
@@ -158,7 +779,62 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/mogielica/",
     "coords": [49.6553491, 20.2767064],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka (ostatni montaż: 7.12.2025)"
+      },
+      {
+        "type": "poi",
+        "description": "Zajazd Mogielica, Jurków 169 (pieczątka w sklepie spożywczym poniżej wejścia do Zajazdu — ten sam właściciel)"
+      },
+      {
+        "type": "poi",
+        "description": "Karczma „Baranówka\", Jurków 233"
+      },
+      {
+        "type": "poi",
+        "description": "Pijalnia wód mineralnych w Szczawie (czynna do godz. 16:00)"
+      },
+      {
+        "type": "poi",
+        "description": "Bistro „Wierchy Beskidu\", Chyszówki 232 — przy parkingu na Przełęczy R. Śmigłego"
+      },
+      {
+        "type": "poi",
+        "description": "Baza namiotowa SKPB Katowice „Polana Wały\" (lipiec–sierpień)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Przełęcz Rydza-Śmigłego → Przełęcz",
+        "url": "/src/data/gpx/mogielica/route-tbxp.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/tbxp",
+        "trailStart": "Prz. Rydza-Śmigłego",
+        "trailDist": 7.1,
+        "trailTime": "2:32h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Rydza-Śmigłego (wariant)",
+        "url": "/src/data/gpx/mogielica/route-tbcl.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/tbcl",
+        "trailStart": "Prz. Rydza-Śmigłego",
+        "trailDist": 9.7,
+        "trailTime": "3:28h",
+        "difficulty": 1
+      },
+      {
+        "name": "Jurków → Jurków",
+        "url": "/src/data/gpx/mogielica/route-d7r.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/d7r",
+        "trailStart": "Jurków",
+        "trailDist": 10.5,
+        "trailTime": "3:43h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Wysoka Kopa",
@@ -175,7 +851,98 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/wysoka-kopa/",
     "coords": [50.8496051, 15.4200839],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka na czerwonym szlaku ok. 400 m od wiaty (montaż: 28.09.2024). Tam też przeniesiono tablicę szczytową w celu ochrony siedlisk cietrzewia"
+      },
+      {
+        "type": "poi",
+        "description": "Klubowa skrzyneczka na czerwonym szlaku ok. 400 m od wiaty (tam też tablica szczytowa)"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko Wysoki Kamień"
+      },
+      {
+        "type": "poi",
+        "description": "Chatka Górzystów"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Na Stogu Izerskim"
+      },
+      {
+        "type": "poi",
+        "description": "Stacja Turystyczna Orle"
+      },
+      {
+        "type": "poi",
+        "description": "Hotel Biathlon Sport & Spa w Jakuszycach"
+      },
+      {
+        "type": "poi",
+        "description": "Stacja Jakuszyce"
+      },
+      {
+        "type": "poi",
+        "description": "Gospoda Graniczna Bombaj, Jakuszyce 6"
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna w Szklarskiej Porębie"
+      },
+      {
+        "type": "poi",
+        "description": "Zakręt Śmierci — stragany z pamiątkami"
+      },
+      {
+        "type": "poi",
+        "description": "Czarny Kamień Resort & SPA, Szklarska Poręba"
+      },
+      {
+        "type": "poi",
+        "description": "Agroturystyka „U Rumcajsa\", ul. Żeromskiego 19, Szklarska Poręba"
+      },
+      {
+        "type": "poi",
+        "description": "Wieża Sky Walk — Świeradów-Zdrój"
+      },
+      {
+        "type": "poi",
+        "description": "Księgarnia Libra w Szklarskiej Porębie (2 pieczątki)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Szklarska Poręba → Szklarska Poręba",
+        "url": "/src/data/gpx/wysoka-kopa/route-a4ko.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/a4ko",
+        "trailStart": "Szklarska Poręba",
+        "trailDist": 14.6,
+        "trailTime": "4:24h",
+        "difficulty": 1
+      },
+      {
+        "name": "Rozdroże Izerskie → Rozdroże Izerskie",
+        "url": "/src/data/gpx/wysoka-kopa/route-ovbv.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ovbv",
+        "trailStart": "Rozdroże Izerskie",
+        "trailDist": 18.4,
+        "trailTime": "5:18h",
+        "difficulty": 1
+      },
+      {
+        "name": "Jakuszyce → Jakuszyce",
+        "url": "/src/data/gpx/wysoka-kopa/route-w2ql.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/w2ql",
+        "trailStart": "Jakuszyce",
+        "trailDist": 12.0,
+        "trailTime": "3:22h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Rudawiec",
@@ -192,7 +959,66 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/rudawiec-2/",
     "coords": [50.2448175, 16.9769665],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Cyborga, Bielice 2"
+      },
+      {
+        "type": "poi",
+        "description": "„Dom Gościnny u Majów\" Gospodarstwo Agroturystyczne, Bielice 5a"
+      },
+      {
+        "type": "poi",
+        "description": "Agroturystyka „U Eli\", Bielice 9"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Paprsek (strona czeska)"
+      },
+      {
+        "type": "poi",
+        "description": "PTTK Oddział w Stroniu Śląskim"
+      },
+      {
+        "type": "poi",
+        "description": "„Raj Pstrąga\", Goszów 14A"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Bielice → Bielice",
+        "url": "/src/data/gpx/rudawiec/route-wiq2.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/wiq2",
+        "trailStart": "Bielice",
+        "trailDist": 10.7,
+        "trailTime": "3:22h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Płoszczyna → Przełęcz Płoszczyna",
+        "url": "/src/data/gpx/rudawiec/route-zg6j.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/zg6j",
+        "trailStart": "Prz. Płoszczyna",
+        "trailDist": 12.6,
+        "trailTime": "3:53h",
+        "difficulty": 1
+      },
+      {
+        "name": "Bielice, leśniczówka → Bielice",
+        "url": "/src/data/gpx/rudawiec/route-h8d2.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8d2",
+        "trailStart": "Bielice, leśniczówka",
+        "trailDist": 26.5,
+        "trailTime": "8:13h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Orlica",
@@ -209,7 +1035,74 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/orlica-2/",
     "coords": [50.3532376, 16.3606809],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka przy wieży widokowej poniżej wierzchołka"
+      },
+      {
+        "type": "poi",
+        "description": "Pieczątka przy wieży widokowej poniżej szczytu"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Orlica w Zieleńcu"
+      },
+      {
+        "type": "poi",
+        "description": "Masarykova Chata (strona czeska)"
+      },
+      {
+        "type": "poi",
+        "description": "Vital & SPA Resort Szarotka, Zieleniec 72"
+      },
+      {
+        "type": "poi",
+        "description": "„Przystanek Alaska\", Zieleniec przy Kamieniu Rubartsch'a (sezon letni)"
+      },
+      {
+        "type": "poi",
+        "description": "Dworek im. Fryderyka Chopina (przy Parku Zdrojowym w Dusznikach-Zdroju)"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep spożywczy „Tu Sklep\", Zieleniec 49"
+      },
+      {
+        "type": "poi",
+        "description": "Gminny Ośrodek Kultury i Biblioteka, Lewin Kłodzki"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Zieleniec → Zieleniec",
+        "url": "/src/data/gpx/orlica/route-h8bj.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8bj",
+        "trailStart": "Zieleniec",
+        "trailDist": 11.8,
+        "trailTime": "3:33h",
+        "difficulty": 1
+      },
+      {
+        "name": "Kamień Rübartscha → Kamień Rübartscha",
+        "url": "/src/data/gpx/orlica/route-ewym.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ewym",
+        "trailStart": "Kamień Rübartscha",
+        "trailDist": 4.2,
+        "trailTime": "1:16h",
+        "difficulty": 1
+      },
+      {
+        "name": "Olešnice v Orlických horách → Olešnice",
+        "url": "/src/data/gpx/orlica/route-dmds.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/dmds",
+        "trailStart": "Olešnice v Orlických horách",
+        "trailDist": 12.3,
+        "trailTime": "4:03h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Wysoka",
@@ -226,7 +1119,94 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/wysoka-2/",
     "coords": [49.3806821, 20.5555269],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — nowa klubowa skrzyneczka (montaż: 28.09.2025)"
+      },
+      {
+        "type": "poi",
+        "description": "PTTK Oddział Pieniński w Szczawnicy"
+      },
+      {
+        "type": "poi",
+        "description": "Polskie Koleje Linowe — stacja górna, Palenica Szczawnica"
+      },
+      {
+        "type": "poi",
+        "description": "Parking „Pod Dębem\" w Jaworkach"
+      },
+      {
+        "type": "poi",
+        "description": "Parking płatny w Jaworkach niedaleko Wąwozu Homole"
+      },
+      {
+        "type": "poi",
+        "description": "Restauracja Bacówka w Jaworkach"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep Wielobranżowy Halina Wróbel, ul. Pod Homolami, Jaworki"
+      },
+      {
+        "type": "poi",
+        "description": "Górski Ośrodek Szkolno-Wypoczynkowy „Pod Durbaszką\""
+      },
+      {
+        "type": "poi",
+        "description": "Szałas „Bukowinki\""
+      },
+      {
+        "type": "poi",
+        "description": "Szałas Groń Szczawnica — Palenica"
+      },
+      {
+        "type": "poi",
+        "description": "Biuro podróży „Szewczyk Travel\", Szczawnica"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum Pienińskie w Szlachtowej (przy zejściu szlakiem żółtym)"
+      },
+      {
+        "type": "poi",
+        "description": "Baza Namiotowa Pod Wysoką (przed rezerwatem)"
+      },
+      {
+        "type": "poi",
+        "description": "Lesnickie Sedlo — sklepik na parkingu (strona słowacka)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Jaworki → Jaworki",
+        "url": "/src/data/gpx/wysoka/route-siag.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/siag",
+        "trailStart": "Jaworki",
+        "trailDist": 8.0,
+        "trailTime": "2:48h",
+        "difficulty": 1
+      },
+      {
+        "name": "Szlachtowa → Jaworki",
+        "url": "/src/data/gpx/wysoka/route-yuan.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/yuan",
+        "trailStart": "Szlachtowa",
+        "trailDist": 11.0,
+        "trailTime": "3:49h",
+        "difficulty": 1
+      },
+      {
+        "name": "Jaworki (długa pętla)",
+        "url": "/src/data/gpx/wysoka/route-slrm.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/slrm",
+        "trailStart": "Jaworki",
+        "trailDist": 27.7,
+        "trailTime": "9:13h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Wielka Sowa",
@@ -243,7 +1223,70 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/wielka-sowa/",
     "coords": [50.6803916, 16.4858004],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka przy drewnianych Sówkach (przeniesiona pod wiatkę)"
+      },
+      {
+        "type": "poi",
+        "description": "Klubowa skrzyneczka przy Sówkach (pod wiatką)"
+      },
+      {
+        "type": "poi",
+        "description": "Wieża widokowa na Wielkiej Sowie (pieczątka przeniesiona do skrzyneczki przy Sówkach)"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko Górskie „Orzeł\" w Sokolcu"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko „Sowa\" w Sokolcu (w przedsionku schroniska, weekendy 11:00–17:00, do końca roku)"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK „Zygmuntówka\" im. Zygmunta Scheffnera, Jugów"
+      },
+      {
+        "type": "poi",
+        "description": "„Szyprówka\" — Chata pod Sową na Przełęczy Sokolej"
+      },
+      {
+        "type": "poi",
+        "description": "„Jugówka\" — bar górski na przełęczy Jugowskiej"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Przełęcz Sokola → Przełęcz Sokola",
+        "url": "/src/data/gpx/wielka-sowa/route-4z6.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/4z6",
+        "trailStart": "Prz. Sokola",
+        "trailDist": 5.5,
+        "trailTime": "2:00h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Walimska → Przełęcz Walimska",
+        "url": "/src/data/gpx/wielka-sowa/route-ra3i.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ra3i",
+        "trailStart": "Prz. Walimska",
+        "trailDist": 7.4,
+        "trailTime": "2:32h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Sokola (wariant)",
+        "url": "/src/data/gpx/wielka-sowa/route-7fpf.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/7fpf",
+        "trailStart": "Prz. Sokola",
+        "trailDist": 11.6,
+        "trailTime": "3:37h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Lackowa",
@@ -260,7 +1303,90 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/lackowa-2/",
     "coords": [49.4264123, 21.1028913],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka (montaż: 1.06.2025)"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep spożywczo-przemysłowy w Izbach"
+      },
+      {
+        "type": "poi",
+        "description": "Agroturystyka Regiecówka, Izby"
+      },
+      {
+        "type": "poi",
+        "description": "Dom na Łąkach — Gospodarstwo Agroturystyczne, Izby 35"
+      },
+      {
+        "type": "poi",
+        "description": "Restauracja & Hotel Końska Dolina, Izby 50"
+      },
+      {
+        "type": "poi",
+        "description": "Gospodarstwo Rolne ASTIR — stadnina koni w Izbach"
+      },
+      {
+        "type": "poi",
+        "description": "Pijalnia Wód Mineralnych w Wysowej-Zdroju"
+      },
+      {
+        "type": "poi",
+        "description": "Centrum Produktu Turystycznego i Kulturowego Beskidu Gorlickiego w Wysowej-Zdroju"
+      },
+      {
+        "type": "poi",
+        "description": "Karczma Regionalna „Gościnna Chata\", Wysowa-Zdrój 63"
+      },
+      {
+        "type": "poi",
+        "description": "Willa Anna-Maria, Wysowa-Zdrój 132"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum Dziejów Tylicza"
+      },
+      {
+        "type": "poi",
+        "description": "Restauracja „Folkówka\", Rynek 16A, Tylicz"
+      },
+      {
+        "type": "poi",
+        "description": "Kościół NMP Wniebowziętej w Brunarach (pieczątka w kruchcie na stoliku z księgami pamiątkowymi)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Wysowa-Zdrój → Wysowa-Zdrój",
+        "url": "/src/data/gpx/lackowa/route-rsj5.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/rsj5",
+        "trailStart": "Wysowa-Zdrój",
+        "trailDist": 16.3,
+        "trailTime": "5:29h",
+        "difficulty": 1
+      },
+      {
+        "name": "Banica → Banica",
+        "url": "/src/data/gpx/lackowa/route-h8d0.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8d0",
+        "trailStart": "Banica",
+        "trailDist": 24.1,
+        "trailTime": "8:15h",
+        "difficulty": 1
+      },
+      {
+        "name": "Ropki → Ropki",
+        "url": "/src/data/gpx/lackowa/route-6zuo.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/6zuo",
+        "trailStart": "Ropki",
+        "trailDist": 13.5,
+        "trailTime": "4:45h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Kowadło",
@@ -277,7 +1403,62 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/kowadlo-2/",
     "coords": [50.2644223, 17.0133157],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka (naprawa: 10.09.2023)"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Cyborga, Bielice 2"
+      },
+      {
+        "type": "poi",
+        "description": "„Dom Gościnny u Majów\" Gospodarstwo Agroturystyczne, Bielice 5a"
+      },
+      {
+        "type": "poi",
+        "description": "Agroturystyka „U Eli\", Bielice 9"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Paprsek (strona czeska)"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Ramzovské sedlo (strona czeska)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Bielice, leśniczówka → Bielice",
+        "url": "/src/data/gpx/kowadlo/route-3wv5.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/3wv5",
+        "trailStart": "Bielice, leśniczówka",
+        "trailDist": 3.9,
+        "trailTime": "1:20h",
+        "difficulty": 1
+      },
+      {
+        "name": "Bielice (wariant)",
+        "url": "/src/data/gpx/kowadlo/route-h8d2.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8d2",
+        "trailStart": "Bielice",
+        "trailDist": 26.5,
+        "trailTime": "8:13h",
+        "difficulty": 1
+      },
+      {
+        "name": "Nowy Gierałtów → Nowy Gierałtów",
+        "url": "/src/data/gpx/kowadlo/route-zw90.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/zw90",
+        "trailStart": "Nowy Gierałtów",
+        "trailDist": 20.0,
+        "trailTime": "6:36h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Jagodna",
@@ -362,7 +1543,82 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/skalnik-2/",
     "coords": [50.8085925, 15.8999635],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka (montaż: 29.09.2024)"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Szwajcarka"
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna w Kowarach, ul. Dworcowa 8 (codziennie 8:00–16:00)"
+      },
+      {
+        "type": "poi",
+        "description": "Kolorowe Jeziorka — bar przy jeziorkach"
+      },
+      {
+        "type": "poi",
+        "description": "Gospodarstwo Agroturystyczne ULGA, Czarnów 28"
+      },
+      {
+        "type": "poi",
+        "description": "Sołtys wsi Czarnów (obok Agroturystyki Czartak)"
+      },
+      {
+        "type": "poi",
+        "description": "Hare Krishna w Czarnowie"
+      },
+      {
+        "type": "poi",
+        "description": "Park Miniatur Zabytków Dolnego Śląska w Kowarach"
+      },
+      {
+        "type": "poi",
+        "description": "Ośrodek Oświatowo-Wypoczynkowy „Wojków\", ul. Górna 2, Kowary (pieczątka w stołówce/kuchni)"
+      },
+      {
+        "type": "poi",
+        "description": "Szkolne Schronisko Młodzieżowe „Skalnik\" w Bukowcu"
+      },
+      {
+        "type": "poi",
+        "description": "Baza Hufca ZHP Łódź-Polesie w Strużnicy (lipiec–wrzesień)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Czarnów → Czarnów",
+        "url": "/src/data/gpx/skalnik/route-cnsa.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/cnsa",
+        "trailStart": "Czarnów",
+        "trailDist": 5.4,
+        "trailTime": "1:45h",
+        "difficulty": 1
+      },
+      {
+        "name": "Czarnów (wariant)",
+        "url": "/src/data/gpx/skalnik/route-ra47.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ra47",
+        "trailStart": "Czarnów",
+        "trailDist": 6.3,
+        "trailTime": "2:05h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz pod Średnicą → Przełęcz",
+        "url": "/src/data/gpx/skalnik/route-doir.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/doir",
+        "trailStart": "Prz. pod Średnicą",
+        "trailDist": 8.1,
+        "trailTime": "2:40h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Waligóra",
@@ -379,7 +1635,68 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/waligora-2/",
     "coords": [50.6807975, 16.2781765],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "gpx": [
+      {
+        "name": "Schronisko Andrzejówka → Schronisko",
+        "url": "/src/data/gpx/waligora/route-5vj4.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/5vj4",
+        "trailStart": "Schronisko Andrzejówka",
+        "trailDist": 1.0,
+        "trailTime": "0:29h",
+        "difficulty": 1
+      },
+      {
+        "name": "Sokołowsko → Sokołowsko",
+        "url": "/src/data/gpx/waligora/route-h8dr.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/h8dr",
+        "trailStart": "Sokołowsko",
+        "trailDist": 8.2,
+        "trailTime": "2:44h",
+        "difficulty": 1
+      },
+      {
+        "name": "Sokołowsko (wariant)",
+        "url": "/src/data/gpx/waligora/route-ojqv.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ojqv",
+        "trailStart": "Sokołowsko",
+        "trailDist": 11.1,
+        "trailTime": "3:38h",
+        "difficulty": 1
+      }
+    ],
+    "poi": [],
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Brak klubowej skrzyneczki na szczycie",
+        "color": "red"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK Andrzejówka (2 pieczątki)"
+      },
+      {
+        "type": "poi",
+        "description": "Gospoda Sudecka, ul. Turystyczna 13, Grzmiąca"
+      },
+      {
+        "type": "poi",
+        "description": "Gościniec Kowalova w Kowalowej"
+      },
+      {
+        "type": "poi",
+        "description": "Oddział PTTK „Ziemi Wałbrzyskiej\", Rynek 9, Wałbrzych"
+      },
+      {
+        "type": "poi",
+        "description": "Ośrodek Wypoczynkowy RADOSNO w Sokołowsku"
+      },
+      {
+        "type": "poi",
+        "description": "Kinokawiarnia Zdrowie, ul. Główna 36, Sokołowsko"
+      }
+    ]
   },
   {
     "name": "Czupel",
@@ -396,7 +1713,82 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/czupel-2/",
     "coords": [49.7679883, 19.1612933],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka (naprawa: 31.10.2025)"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko górskie PTTK Na Magurce"
+      },
+      {
+        "type": "poi",
+        "description": "Chata na Magurce"
+      },
+      {
+        "type": "poi",
+        "description": "Chatka Studencka na Rogaczu"
+      },
+      {
+        "type": "poi",
+        "description": "Baza Szturmowa CZUPEL w Międzybrodziu Bialskim"
+      },
+      {
+        "type": "poi",
+        "description": "Bar Gawra na Przełęczy Przegibek (przy parkingu)"
+      },
+      {
+        "type": "poi",
+        "description": "Urząd Gminy w Wilkowicach"
+      },
+      {
+        "type": "poi",
+        "description": "Urząd Gminy w Łodygowicach"
+      },
+      {
+        "type": "poi",
+        "description": "Szkoła Podstawowa im. W. Jagiełły w Wilkowicach"
+      },
+      {
+        "type": "poi",
+        "description": "Gminna Biblioteka Publiczna w Czernichowie (czynna do 16:00)"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep Lewiatan w Międzybrodziu Bialskim"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Międzybrodzie Bialskie → Międzybrodzie",
+        "url": "/src/data/gpx/czupel/route-7xnc.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/7xnc",
+        "trailStart": "Międzybrodzie Bialskie",
+        "trailDist": 7.3,
+        "trailTime": "2:50h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Przegibek → Przełęcz Przegibek",
+        "url": "/src/data/gpx/czupel/route-7s7v.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/7s7v",
+        "trailStart": "Prz. Przegibek",
+        "trailDist": 9.4,
+        "trailTime": "3:05h",
+        "difficulty": 1
+      },
+      {
+        "name": "Wilkowice → Wilkowice",
+        "url": "/src/data/gpx/czupel/route-z0x5.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/z0x5",
+        "trailStart": "Wilkowice",
+        "trailDist": 14.4,
+        "trailTime": "4:38h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Szczeliniec Wielki",
@@ -413,7 +1805,82 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/szczeliniec-wielki/",
     "coords": [50.4842038, 16.3434724],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka w schronisku PTTK „Na Szczelińcu\" (skrzyneczka przy wejściu) oraz w punkcie kasowym"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK „Na Szczelińcu\" — skrzyneczka przy wejściu"
+      },
+      {
+        "type": "poi",
+        "description": "Punkt kasowy na Szczelińcu"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK „Pasterka\""
+      },
+      {
+        "type": "poi",
+        "description": "Sklep spożywczy w Karłowie"
+      },
+      {
+        "type": "poi",
+        "description": "Ostatni stragan z pamiątkami przed wejściem na szlak (4 pieczątki)"
+      },
+      {
+        "type": "poi",
+        "description": "Centrum Szkoleniowo-Edukacyjne PNGS, Karłów 10 (2 pieczątki)"
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna w Radkowie, Rynek 6"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum Kultury Ludowej Pogórza Sudeckiego, Pstrążna 14, Kudowa-Zdrój (nieczynne w poniedziałki)"
+      },
+      {
+        "type": "poi",
+        "description": "Szlak Ginących Zawodów, ul. Chrobrego 43a, Kudowa-Zdrój"
+      },
+      {
+        "type": "poi",
+        "description": "Sanktuarium Matki Bożej Wambierzyckiej Królowej Rodzin w Wambierzycach"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Szczeliniec Wielki, parking → parking",
+        "url": "/src/data/gpx/szczeliniec-wielki/route-z8zu.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/z8zu",
+        "trailStart": "Szczeliniec Wielki, parking",
+        "trailDist": 2.9,
+        "trailTime": "1:07h",
+        "difficulty": 1
+      },
+      {
+        "name": "Karłów → Karłów",
+        "url": "/src/data/gpx/szczeliniec-wielki/route-ef3w.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/ef3w",
+        "trailStart": "Karłów",
+        "trailDist": 3.6,
+        "trailTime": "1:11h",
+        "difficulty": 1
+      },
+      {
+        "name": "Pusta Ścieżka, parking",
+        "url": "/src/data/gpx/szczeliniec-wielki/route-hb2c.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/hb2c",
+        "trailStart": "Pusta Ścieżka, parking",
+        "trailDist": 7.5,
+        "trailTime": "2:48h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Lubomir",
@@ -430,7 +1897,58 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/lubomir/",
     "coords": [49.7668143, 20.0593994],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Klubowa skrzyneczka na szczycie — uwaga: pieczątka wymaga naprawy, sprawdź aktualny stan przed wyjazdem"
+      },
+      {
+        "type": "poi",
+        "description": "Schronisko PTTK na Kudłaczach"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep spożywczo-przemysłowy w Węglówce"
+      },
+      {
+        "type": "poi",
+        "description": "Pieczątka u Sołtysa wsi Węglówka"
+      },
+      {
+        "type": "poi",
+        "description": "Delikatesy HitPol we wsi Węglówka"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Schronisko na Kudłaczach → Schronisko",
+        "url": "/src/data/gpx/lubomir/route-5jo.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/5jo",
+        "trailStart": "Schronisko na Kudłaczach",
+        "trailDist": 7.2,
+        "trailTime": "2:14h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Jaworzyce → Przełęcz Jaworzyce",
+        "url": "/src/data/gpx/lubomir/route-d7e.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/d7e",
+        "trailStart": "Prz. Jaworzyce",
+        "trailDist": 6.1,
+        "trailTime": "2:05h",
+        "difficulty": 1
+      },
+      {
+        "name": "Poręba → Poręba",
+        "url": "/src/data/gpx/lubomir/route-i86.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/i86",
+        "trailStart": "Poręba",
+        "trailDist": 15.2,
+        "trailTime": "5:05h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Biskupia Kopa",
@@ -447,7 +1965,62 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/biskupia-kopa/",
     "coords": [50.2566824, 17.4287874],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Czeska pieczątka w zewnętrznej skrzyneczce na szczycie (montaż: 17.05.2025)"
+      },
+      {
+        "type": "poi",
+        "description": "Dom Turysty „Pod Biskupią Kopą\""
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna Zlate Hory (strona czeska)"
+      },
+      {
+        "type": "poi",
+        "description": "Hotele Gorzelanny, Pokrzywna 76"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep spożywczy Michałek, Jarnołtówek 185"
+      },
+      {
+        "type": "poi",
+        "description": "Ośrodek Konferencyjno-Wypoczynkowy „Ziemowit\", Jarnołtówek 204"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Jarnołtówek → Jarnołtówek",
+        "url": "/src/data/gpx/biskupia-kopa/route-s4t2.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/s4t2",
+        "trailStart": "Jarnołtówek",
+        "trailDist": 7.6,
+        "trailTime": "2:45h",
+        "difficulty": 1
+      },
+      {
+        "name": "Jarnołtówek (wariant)",
+        "url": "/src/data/gpx/biskupia-kopa/route-sqll.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/sqll",
+        "trailStart": "Jarnołtówek",
+        "trailDist": 9.8,
+        "trailTime": "3:27h",
+        "difficulty": 1
+      },
+      {
+        "name": "Pokrzywna → Pokrzywna",
+        "url": "/src/data/gpx/biskupia-kopa/route-kabm.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/kabm",
+        "trailStart": "Pokrzywna",
+        "trailDist": 14.0,
+        "trailTime": "4:36h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Chełmiec",
@@ -464,7 +2037,82 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/chelmiec/",
     "coords": [50.779388, 16.2107344],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka przy wieży — przeniesiona z wnętrza wieży do zewnętrznej skrzyneczki (stan: 30.12.2025)"
+      },
+      {
+        "type": "poi",
+        "description": "Pieczątka przy wieży (skrzyneczka na zewnątrz)"
+      },
+      {
+        "type": "poi",
+        "description": "Urząd Miejski w Boguszowie-Gorcach, Rynek (skrzyneczka na zewnątrz budynku przy drzwiach głównych)"
+      },
+      {
+        "type": "poi",
+        "description": "Miejska Biblioteka Publiczna im. W. Broniewskiego, Centrum Kultury, Boguszów-Gorce"
+      },
+      {
+        "type": "poi",
+        "description": "Straż Miejska w Boguszowie-Gorcach (parter budynku UM)"
+      },
+      {
+        "type": "poi",
+        "description": "Centrum Kulturalno-Kongresowe szyb „Witold\", ul. Traugutta 12G, Boguszów-Gorce"
+      },
+      {
+        "type": "poi",
+        "description": "Restauracja & Pizzeria Baryt, Plac Odrodzenia 13, Boguszów-Gorce"
+      },
+      {
+        "type": "poi",
+        "description": "Hotel Piotr *** SPA & Wellness, ul. T. Kościuszki 4, Boguszów-Gorce"
+      },
+      {
+        "type": "poi",
+        "description": "Pijalnia wód mineralnych w Parku Zdrojowym w Szczawnie-Zdroju"
+      },
+      {
+        "type": "poi",
+        "description": "„Dworzysko\" Hotel i Restauracja, al. Spacerowa 22, Szczawno-Zdrój"
+      },
+      {
+        "type": "poi",
+        "description": "Aqua Zdrój — Wałbrzych, ul. Ratuszowa 6 (w hotelu)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Boguszów-Gorce → Boguszów-Gorce",
+        "url": "/src/data/gpx/chelmiec/route-5xah.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/5xah",
+        "trailStart": "Boguszów-Gorce",
+        "trailDist": 6.5,
+        "trailTime": "2:10h",
+        "difficulty": 1
+      },
+      {
+        "name": "Biały Kamień → Biały Kamień",
+        "url": "/src/data/gpx/chelmiec/route-gg25.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/gg25",
+        "trailStart": "Biały Kamień",
+        "trailDist": 8.8,
+        "trailTime": "2:44h",
+        "difficulty": 1
+      },
+      {
+        "name": "Lubomin → Lubomin",
+        "url": "/src/data/gpx/chelmiec/route-khkx.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/khkx",
+        "trailStart": "Lubomin",
+        "trailDist": 10.6,
+        "trailTime": "3:19h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Kłodzka Góra",
@@ -481,7 +2129,58 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/klodzka-gora/",
     "coords": [50.4517519, 16.753228],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka"
+      },
+      {
+        "type": "poi",
+        "description": "Informacja Turystyczna Kłodzko, przy pl. Jedności"
+      },
+      {
+        "type": "poi",
+        "description": "PTTK Oddział „Ziemi Kłodzkiej\", ul. Stwosza 1, Kłodzko (Rynek)"
+      },
+      {
+        "type": "poi",
+        "description": "Twierdza Kłodzko"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum Ziemi Kłodzkiej, ul. Łukasiewicza 4, Kłodzko"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Przełęcz Kłodzka → Przełęcz Kłodzka",
+        "url": "/src/data/gpx/klodzka-gora/route-dtd5.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/dtd5",
+        "trailStart": "Prz. Kłodzka",
+        "trailDist": 5.9,
+        "trailTime": "2:05h",
+        "difficulty": 1
+      },
+      {
+        "name": "Przełęcz Łaszczowa → Przełęcz Łaszczowa",
+        "url": "/src/data/gpx/klodzka-gora/route-52it.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/52it",
+        "trailStart": "Prz. Łaszczowa",
+        "trailDist": 6.6,
+        "trailTime": "2:08h",
+        "difficulty": 1
+      },
+      {
+        "name": "Kłodzko → Kłodzko",
+        "url": "/src/data/gpx/klodzka-gora/route-g09r.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/g09r",
+        "trailStart": "Kłodzko",
+        "trailDist": 17.6,
+        "trailTime": "5:21h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Skopiec",
@@ -498,7 +2197,66 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/skopiec/",
     "coords": [50.9438547, 15.8847495],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep spożywczy Komarno 70"
+      },
+      {
+        "type": "poi",
+        "description": "Szałas „Muflon\" w Komarnie"
+      },
+      {
+        "type": "poi",
+        "description": "Stodoła Eurosklep w Komarnie"
+      },
+      {
+        "type": "poi",
+        "description": "Wieża widokowa w Radomierzu (czynna sezonowo, maj–wrzesień)"
+      },
+      {
+        "type": "poi",
+        "description": "Karczma Dom Weselny Hotel Przycup w Dolinie, Radomierz 1B"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep ogólnospożywczy, ul. Chrobrego 103, Wojcieszów"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Przełęcz Komarnicka → Rozdroże",
+        "url": "/src/data/gpx/skopiec/route-c75s.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/c75s",
+        "trailStart": "Prz. Komarnicka",
+        "trailDist": 2.3,
+        "trailTime": "0:44h",
+        "difficulty": 1
+      },
+      {
+        "name": "Radomierz → Radomierz",
+        "url": "/src/data/gpx/skopiec/route-fxcm.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/fxcm",
+        "trailStart": "Radomierz",
+        "trailDist": 13.1,
+        "trailTime": "3:52h",
+        "difficulty": 1
+      },
+      {
+        "name": "Wojcieszów → Wojcieszów",
+        "url": "/src/data/gpx/skopiec/route-zbxk.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/zbxk",
+        "trailStart": "Wojcieszów",
+        "trailDist": 9.1,
+        "trailTime": "2:50h",
+        "difficulty": 1
+      }
+    ]
   },
   {
     "name": "Ślęża",
@@ -521,7 +2279,7 @@
         "name": "Przełęcz Tąpadła → Przełęcz Tąpadła",
         "url": "/src/data/gpx/sleza/route-ocd6.gpx",
         "mapaUrl": "https://mapa-turystyczna.pl/route/ocd6",
-        "trailStart": "Prz. Spalona",
+        "trailStart": "Prz. Tąpadła",
         "trailDist": 6.1,
         "trailTime": "2:08h",
         "difficulty": 1
@@ -530,7 +2288,7 @@
         "name": "Przełęcz Tąpadła (wariant)",
         "url": "/src/data/gpx/sleza/route-wmqv.gpx",
         "mapaUrl": "https://mapa-turystyczna.pl/route/wmqv",
-        "trailStart": "Prz. Spalona",
+        "trailStart": "Prz. Tąpadła",
         "trailDist": 7.7,
         "trailTime": "2:39h",
         "difficulty": 1
@@ -539,7 +2297,7 @@
         "name": "Dom Turysty Pod Wieżycą → Dom Turysty",
         "url": "/src/data/gpx/sleza/route-hb0w.gpx",
         "mapaUrl": "https://mapa-turystyczna.pl/route/hb0w",
-        "trailStart": "Przełęcz nad Porębą",
+        "trailStart": "Dom Turysty Pod Wieżycą",
         "trailDist": 10.1,
         "trailTime": "3:20h",
         "difficulty": 1
@@ -550,6 +2308,52 @@
         "type": "parking",
         "name": "Przełęcz Tąpadła",
         "coords": [50.84540283739582, 16.69840956198017]
+      }
+    ],
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — Dom Turysty (przy barze i skrzyneczka przy wejściu do schroniska)"
+      },
+      {
+        "type": "poi",
+        "description": "Dom Turysty „Góra Ślęża\" im. Romana Zmorskiego — przy barze"
+      },
+      {
+        "type": "poi",
+        "description": "Skrzyneczka przy wejściu do schroniska"
+      },
+      {
+        "type": "poi",
+        "description": "Punkt gastronomiczny na Przełęczy Tępadła"
+      },
+      {
+        "type": "poi",
+        "description": "Sklepik z pamiątkami regionalnymi (budka obok serków) na Przełęczy Tępadła"
+      },
+      {
+        "type": "poi",
+        "description": "Sklep wielobranżowy, Tępadła 40A"
+      },
+      {
+        "type": "poi",
+        "description": "Dom Turysty „Pod Wieżycą\", ul. Armii Krajowej 13, Sobótka"
+      },
+      {
+        "type": "poi",
+        "description": "Ślężański Sklep/InfoPunkt, ul. Świdnicka 7A, Sobótka"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum Ślężańskie im. S. Dunajewskiego, ul. św. Jakuba 18, Sobótka"
+      },
+      {
+        "type": "poi",
+        "description": "Ślężański Zamek Górka (po wcześniejszym umówieniu na zwiedzanie)"
+      },
+      {
+        "type": "poi",
+        "description": "Wieża widokowa na Wieżycy (IV–X, weekendy 10:00–16:00)"
       }
     ]
   },
@@ -568,6 +2372,73 @@
     "kgpUrl": "https://kgp.info.pl/wykaz-szczytow/gory-swietokrzyskie-lysica/",
     "coords": [50.8916101, 20.89679],
     "conquered": false,
-    "conqueredAt": null
+    "conqueredAt": null,
+    "stamps": [
+      {
+        "type": "summit",
+        "description": "Pieczątka na szczycie — klubowa skrzyneczka (montaż: 31.10.2025)"
+      },
+      {
+        "type": "poi",
+        "description": "Wejście do ŚPN, Święta Katarzyna"
+      },
+      {
+        "type": "poi",
+        "description": "Ośrodek Wypoczynkowy „Jodełka\" w Świętej Katarzynie"
+      },
+      {
+        "type": "poi",
+        "description": "Muzeum Minerałów i Skamieniałości w Świętej Katarzynie"
+      },
+      {
+        "type": "poi",
+        "description": "Kościół św. Katarzyny DiM w Świętej Katarzynie"
+      },
+      {
+        "type": "poi",
+        "description": "Niepubliczne Szkolne Schronisko Młodzieżowe „Tanie spanie\", ul. Świętokrzyska 2, Święta Katarzyna"
+      },
+      {
+        "type": "poi",
+        "description": "Galeria Rękodzieła w centrum Świętej Katarzyny"
+      },
+      {
+        "type": "poi",
+        "description": "Chata Kaka w Kakoninie (tuż przy szlaku)"
+      },
+      {
+        "type": "poi",
+        "description": "Sklepik z pamiątkami naprzeciwko wejścia do ŚPN, Święta Katarzyna (2 pieczątki: Łysica i Skała Agaty)"
+      }
+    ],
+    "gpx": [
+      {
+        "name": "Święta Katarzyna → Święta Katarzyna",
+        "url": "/src/data/gpx/lysica/route-qfg8.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/qfg8",
+        "trailStart": "Święta Katarzyna",
+        "trailDist": 5.2,
+        "trailTime": "1:43h",
+        "difficulty": 1
+      },
+      {
+        "name": "Bieliny → Bieliny",
+        "url": "/src/data/gpx/lysica/route-rcmp.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/rcmp",
+        "trailStart": "Bieliny",
+        "trailDist": 14.5,
+        "trailTime": "4:15h",
+        "difficulty": 1
+      },
+      {
+        "name": "Trzcianka → Święta Katarzyna",
+        "url": "/src/data/gpx/lysica/route-qmcf.gpx",
+        "mapaUrl": "https://mapa-turystyczna.pl/route/qmcf",
+        "trailStart": "Trzcianka",
+        "trailDist": 20.1,
+        "trailTime": "5:30h",
+        "difficulty": 1
+      }
+    ]
   }
 ]

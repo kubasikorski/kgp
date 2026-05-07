@@ -2,6 +2,7 @@
 import { onMounted, onBeforeUnmount, useTemplateRef, watch } from 'vue'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import { peakIcon } from '@/utils/peakMarker'
 
 const props = defineProps({
   peak: { type: Object, required: true },
@@ -24,36 +25,6 @@ let poiMarkerMap = new Map()
 let gpxLayer
 
 const poiKey = (p) => `${p.type}:${p.coords[0]},${p.coords[1]}`
-
-const PIN_GRADIENTS = {
-  pending: ['#F87171', '#7F1D1D'],
-  conquered: ['#45D1BB', '#0E6E6F'],
-}
-
-const peakSvg = (state) => {
-  const [from, to] = PIN_GRADIENTS[state]
-  const id = `fassPin-${state}`
-  return `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Peak">
-  <defs>
-    <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="${from}"></stop>
-      <stop offset="100%" stop-color="${to}"></stop>
-    </linearGradient>
-  </defs>
-  <path d="M32 60 L17 33.5 A18 18 0 1 1 47 33.5 Z" fill="url(#${id})"></path>
-  <path d="M20 30 L25 23 L28 26 L33 15 L39 23 L42 20 L44 30 Z" fill="#FFFFFF"></path>
-</svg>`
-}
-
-const peakIcon = (conquered) =>
-  L.divIcon({
-    className: 'peak-marker',
-    html: `<span class="peak-pin">${peakSvg(conquered ? 'conquered' : 'pending')}</span>`,
-    iconSize: [52, 52],
-    iconAnchor: [26, 52],
-    popupAnchor: [0, -48],
-  })
 
 const POI_LABELS = {
   parking: { short: 'P', long: 'Parking' },
@@ -78,7 +49,7 @@ const render = () => {
   if (peakMarker) peakMarker.remove()
   if (poiLayer) poiLayer.remove()
 
-  peakMarker = L.marker(props.peak.coords, { icon: peakIcon(props.peak.conquered) })
+  peakMarker = L.marker(props.peak.coords, { icon: peakIcon(props.peak) })
     .addTo(map)
     .bindPopup(
       `<strong>${props.peak.name}</strong> (${props.peak.elevation} m)<br>${props.peak.range}`,
@@ -114,9 +85,9 @@ onMounted(() => {
 
 watch(() => props.peak?.slug, render)
 watch(
-  () => props.peak?.conquered,
-  (conquered) => {
-    if (peakMarker && conquered !== undefined) peakMarker.setIcon(peakIcon(conquered))
+  () => [props.peak?.conquered, props.peak?.planned],
+  () => {
+    if (peakMarker && props.peak) peakMarker.setIcon(peakIcon(props.peak))
   },
 )
 watch(
@@ -169,25 +140,19 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
+  <section
+    class="peak-details-map relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200"
+  >
     <div ref="mapEl" class="h-full w-full"></div>
   </section>
 </template>
 
 <style>
-.leaflet-tile-pane {
+.peak-details-map .leaflet-tile-pane {
   filter: saturate(0.55) contrast(0.85) brightness(1.05);
 }
-.peak-pin {
-  display: block;
-  width: 52px;
-  height: 52px;
+.peak-details-map .peak-pin {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
-}
-.peak-pin svg {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 .poi-pin {
   display: flex;
