@@ -52,6 +52,16 @@ export default defineConfig({
             },
           },
           {
+            // GPX track files – cache each track once visited so it loads offline.
+            urlPattern: /\/assets\/.*\.gpx$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gpx-tracks',
+              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 90 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             // Supabase REST/storage GETs – serve cached data offline, refresh online.
             urlPattern: /^https:\/\/[a-z0-9]+\.supabase\.co\/.*/i,
             handler: 'StaleWhileRevalidate',
