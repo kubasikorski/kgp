@@ -1,8 +1,8 @@
 <script setup>
-import { onMounted, onBeforeUnmount, useTemplateRef, watch } from 'vue'
+import { watch } from 'vue'
 import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
 import { peakIcon } from '@/utils/peakMarker'
+import BaseMap from '@/components/BaseMap.vue'
 
 const props = defineProps({
   peaks: { type: Array, required: true },
@@ -10,7 +10,6 @@ const props = defineProps({
 })
 const emit = defineEmits(['select'])
 
-const mapEl = useTemplateRef('mapEl')
 const markersByName = new Map()
 let map
 let allBounds
@@ -44,15 +43,10 @@ const syncMarkers = (fitBounds) => {
   }
 }
 
-onMounted(() => {
-  map = L.map(mapEl.value)
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 19,
-  }).addTo(map)
+const onReady = (m) => {
+  map = m
   syncMarkers(true)
-})
+}
 
 watch(
   () => props.selected,
@@ -83,16 +77,10 @@ watch(
     syncMarkers(prevNames !== nextNames)
   },
 )
-
-onBeforeUnmount(() => {
-  map?.remove()
-})
 </script>
 
 <template>
-  <section class="peak-map relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
-    <div ref="mapEl" class="h-full w-full"></div>
-  </section>
+  <BaseMap wrapper-class="peak-map" @ready="onReady" />
 </template>
 
 <style>

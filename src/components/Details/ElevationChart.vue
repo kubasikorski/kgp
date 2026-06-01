@@ -4,6 +4,7 @@ import { onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 const props = defineProps({
   gpx: { type: Object, default: null },
 })
+const emit = defineEmits(['hover'])
 
 const gpxUrls = import.meta.glob('@/data/gpx/**/*.gpx', {
   eager: true,
@@ -18,6 +19,8 @@ const stats = ref(null)
 let points = []
 let resizeObserver = null
 let fetchToken = 0
+let geom = null
+let hoverIndex = null
 
 const haversine = (a, b) => {
   const R = 6371000
@@ -66,7 +69,7 @@ const buildSeries = (parsed) => {
     }
     minEle = Math.min(minEle, p.ele)
     maxEle = Math.max(maxEle, p.ele)
-    series.push({ dist: cumulative, ele: p.ele })
+    series.push({ dist: cumulative, ele: p.ele, lat: p.lat, lon: p.lon })
   }
   return { series, totalDist: cumulative, gain, loss, minEle, maxEle }
 }
@@ -113,6 +116,8 @@ const draw = () => {
 
   const xAt = (d) => padLeft + (d / totalDist) * plotW
   const yAt = (e) => padTop + plotH - ((e - yMin) / (yMax - yMin)) * plotH
+
+  geom = { padLeft, plotW, totalDist }
 
   ctx.strokeStyle = '#e2e8f0'
   ctx.lineWidth = 1
@@ -164,11 +169,73 @@ const draw = () => {
   ctx.strokeStyle = '#059669'
   ctx.lineWidth = 1.5
   ctx.stroke()
+
+  if (hoverIndex != null && points[hoverIndex]) {
+    const p = points[hoverIndex]
+    const x = xAt(p.dist)
+    const y = yAt(p.ele)
+    ctx.strokeStyle = 'rgba(220, 38, 38, 0.55)'
+    ctx.lineWidth = 1
+    ctx.beginPath()
+    ctx.moveTo(x, padTop)
+    ctx.lineTo(x, padTop + plotH)
+    ctx.stroke()
+
+    ctx.fillStyle = '#dc2626'
+    ctx.strokeStyle = '#fff'
+    ctx.lineWidth = 2
+    ctx.beginPath()
+    ctx.arc(x, y, 4, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.stroke()
+
+    const label = `${Math.round(p.ele)} m`
+    ctx.font = '10px ui-sans-serif, system-ui, sans-serif'
+    ctx.textBaseline = 'bottom'
+    ctx.textAlign = x > padLeft + plotW / 2 ? 'right' : 'left'
+    ctx.fillStyle = '#334155'
+    ctx.fillText(label, x + (ctx.textAlign === 'right' ? -6 : 6), y - 6)
+  }
+}
+
+const nearestIndex = (d) => {
+  const last = points.length - 1
+  if (d <= points[0].dist) return 0
+  if (d >= points[last].dist) return last
+  let lo = 0
+  let hi = last
+  while (lo < hi) {
+    const mid = (lo + hi) >> 1
+    if (points[mid].dist < d) lo = mid + 1
+    else hi = mid
+  }
+  if (lo > 0 && d - points[lo - 1].dist < points[lo].dist - d) return lo - 1
+  return lo
+}
+
+const onPointerMove = (e) => {
+  if (!points.length || !geom) return
+  const rect = canvasEl.value.getBoundingClientRect()
+  const d = ((e.clientX - rect.left - geom.padLeft) / geom.plotW) * geom.totalDist
+  const idx = nearestIndex(d)
+  if (idx === hoverIndex) return
+  hoverIndex = idx
+  draw()
+  const p = points[idx]
+  emit('hover', { lat: p.lat, lon: p.lon, ele: p.ele })
+}
+
+const onPointerLeave = () => {
+  if (hoverIndex === null) return
+  hoverIndex = null
+  draw()
+  emit('hover', null)
 }
 
 const load = async (gpx) => {
   const token = ++fetchToken
   points = []
+  hoverIndex = null
   stats.value = null
   if (!gpx?.url) {
     draw()
@@ -229,7 +296,12 @@ watch(() => props.gpx?.url, () => load(props.gpx))
       </dl>
     </div>
     <div ref="wrapperEl" class="mt-3 w-full">
-      <canvas ref="canvasEl"></canvas>
+      <canvas
+        ref="canvasEl"
+        class="cursor-crosshair"
+        @mousemove="onPointerMove"
+        @mouseleave="onPointerLeave"
+      ></canvas>
     </div>
   </div>
 </template>

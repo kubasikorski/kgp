@@ -5,7 +5,7 @@ defineProps({
   gpxFiles: { type: Array, default: () => [] },
   selectedGpx: { type: Object, default: null },
 })
-const emit = defineEmits(['select-gpx'])
+const emit = defineEmits(['select-gpx', 'hover-point'])
 </script>
 
 <template>
@@ -66,7 +66,12 @@ const emit = defineEmits(['select-gpx'])
         </div>
       </li>
     </ul>
-    <ElevationChart class="mt-4" v-if="selectedGpx" :gpx="selectedGpx" />
+    <ElevationChart
+      class="mt-4"
+      v-if="selectedGpx"
+      :gpx="selectedGpx"
+      @hover="emit('hover-point', $event)"
+    />
   </template>
   <p v-else class="text-sm text-slate-500">Brak dostępnych śladów tras.</p>
 </template>

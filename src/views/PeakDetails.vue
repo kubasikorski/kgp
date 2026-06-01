@@ -22,9 +22,14 @@ const peak = computed(() => {
 
 const focusedPoi = ref(null)
 const selectedGpx = ref(null)
+const tracePoint = ref(null)
 watch(() => route.params.peak_slug, () => {
   focusedPoi.value = null
   selectedGpx.value = null
+  tracePoint.value = null
+})
+watch(selectedGpx, () => {
+  tracePoint.value = null
 })
 
 const onFocusPoi = (poi) => {
@@ -70,6 +75,7 @@ const onSelectGpx = (gpx) => {
       :poi="peak.poi ?? []"
       :focused="focusedPoi"
       :gpx="selectedGpx"
+      :trace="tracePoint"
     />
     <section v-else class="rounded-2xl bg-white shadow-lg ring-1 ring-slate-200"></section>
     <aside
@@ -100,6 +106,7 @@ const onSelectGpx = (gpx) => {
         :selected-gpx="selectedGpx"
         @focus-poi="onFocusPoi"
         @select-gpx="onSelectGpx"
+        @hover-point="tracePoint = $event"
       />
     </aside>
   </main>

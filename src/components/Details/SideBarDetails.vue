@@ -9,7 +9,7 @@ const props = defineProps({
   peak: { type: Object, required: true },
   selectedGpx: { type: Object, default: null },
 })
-const emit = defineEmits(['close', 'focus-poi', 'select-gpx'])
+const emit = defineEmits(['close', 'focus-poi', 'select-gpx', 'hover-point'])
 
 const store = usePeaksStore()
 
@@ -188,6 +188,7 @@ const togglePlanned = () => {
           :gpx-files="gpxFiles"
           :selected-gpx="selectedGpx"
           @select-gpx="emit('select-gpx', $event)"
+          @hover-point="emit('hover-point', $event)"
         />
       </div>
       <div v-show="activeTab === 'poi'">

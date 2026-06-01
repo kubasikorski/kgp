@@ -1,14 +1,15 @@
 <script setup>
-import { onMounted, onBeforeUnmount, useTemplateRef, watch } from 'vue'
+import { watch } from 'vue'
 import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
 import { peakIcon } from '@/utils/peakMarker'
+import BaseMap from '@/components/BaseMap.vue'
 
 const props = defineProps({
   peak: { type: Object, required: true },
   poi: { type: Array, default: () => [] },
   focused: { type: Object, default: null },
   gpx: { type: Object, default: null },
+  trace: { type: Object, default: null },
 })
 
 const gpxUrls = import.meta.glob('@/data/gpx/**/*.gpx', {
@@ -17,12 +18,12 @@ const gpxUrls = import.meta.glob('@/data/gpx/**/*.gpx', {
   import: 'default',
 })
 
-const mapEl = useTemplateRef('mapEl')
 let map
 let peakMarker
 let poiLayer
 let poiMarkerMap = new Map()
 let gpxLayer
+let traceMarker
 
 const poiKey = (p) => `${p.type}:${p.coords[0]},${p.coords[1]}`
 
@@ -73,15 +74,10 @@ const render = () => {
   }
 }
 
-onMounted(() => {
-  map = L.map(mapEl.value)
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 19,
-  }).addTo(map)
+const onReady = (m) => {
+  map = m
   render()
-})
+}
 
 watch(() => props.peak?.slug, render)
 watch(
@@ -120,6 +116,32 @@ const clearGpx = () => {
 }
 
 watch(
+  () => props.trace,
+  (point) => {
+    if (!map) return
+    if (!point) {
+      if (traceMarker) {
+        traceMarker.remove()
+        traceMarker = null
+      }
+      return
+    }
+    const latlng = [point.lat, point.lon]
+    if (traceMarker) {
+      traceMarker.setLatLng(latlng)
+    } else {
+      traceMarker = L.circleMarker(latlng, {
+        radius: 6,
+        color: '#fff',
+        weight: 2,
+        fillColor: '#dc2626',
+        fillOpacity: 1,
+      }).addTo(map)
+    }
+  },
+)
+
+watch(
   () => props.gpx,
   async (gpx) => {
     clearGpx()
@@ -133,18 +155,10 @@ watch(
     map.fitBounds(gpxLayer.getBounds(), { padding: [40, 40] })
   },
 )
-
-onBeforeUnmount(() => {
-  map?.remove()
-})
 </script>
 
 <template>
-  <section
-    class="peak-details-map relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200"
-  >
-    <div ref="mapEl" class="h-full w-full"></div>
-  </section>
+  <BaseMap wrapper-class="peak-details-map" @ready="onReady" />
 </template>
 
 <style>
