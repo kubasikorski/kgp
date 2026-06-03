@@ -1,8 +1,18 @@
 <script setup>
-import { computed, useTemplateRef } from 'vue'
+import { computed, ref, useTemplateRef } from 'vue'
 import SideBarPeakDetails from './SideBarPeakDetails.vue'
 import PeakList from './PeakList.vue'
+import LoginDrawer from './LoginDrawer.vue'
 import { usePeaksStore } from '@/stores/peaks'
+import { useAuthStore } from '@/stores/auth'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 const props = defineProps({
   peaks: { type: Array, required: true },
@@ -13,7 +23,9 @@ const props = defineProps({
 defineEmits(['select', 'close', 'update:filter'])
 
 const store = usePeaksStore()
+const auth = useAuthStore()
 const fileInput = useTemplateRef('fileInput')
+const loginOpen = ref(false)
 
 const conqueredCount = computed(() => props.allPeaks.filter((p) => p.conquered).length)
 const totalCount = computed(() => props.allPeaks.length)
@@ -115,6 +127,74 @@ const onImportFile = async (event) => {
             <line x1="12" y1="3" x2="12" y2="15" />
           </svg>
         </button>
+        <button
+          v-if="!auth.isLoggedIn"
+          type="button"
+          class="rounded-md p-1.5 text-slate-500 ring-1 ring-slate-200 transition hover:bg-slate-100 hover:text-slate-900"
+          title="Zaloguj się"
+          @click="loginOpen = true"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </button>
+        <DropdownMenu v-else>
+          <DropdownMenuTrigger as-child>
+            <button
+              type="button"
+              class="rounded-md p-1.5 text-slate-500 ring-1 ring-slate-200 transition hover:bg-slate-100 hover:text-slate-900"
+              title="Moje konto"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <path d="M18 20a6 6 0 0 0-12 0" />
+                <circle cx="12" cy="10" r="4" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel class="max-w-48 truncate">
+              {{ auth.user?.email ?? 'Moje konto' }}
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem @select="auth.signOut()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" y1="12" x2="9" y2="12" />
+              </svg>
+              Wyloguj
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <input
           ref="fileInput"
           type="file"
@@ -124,6 +204,8 @@ const onImportFile = async (event) => {
         />
       </div>
     </header>
+
+    <LoginDrawer v-model:open="loginOpen" />
 
     <SideBarPeakDetails v-if="selected" :peak="selected" @close="$emit('close')" />
 
