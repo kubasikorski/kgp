@@ -42,6 +42,7 @@ export function useUserDataSync() {
     pushTimer = setTimeout(push, PUSH_DEBOUNCE_MS)
   }
 
+
   const pull = async () => {
     if (!auth.isLoggedIn) return
     const { data, error } = await supabase
