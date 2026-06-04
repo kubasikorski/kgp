@@ -40,7 +40,6 @@ onMounted(() => {
       } else {
         userMarker = L.marker(e.latlng, { icon: userIcon, zIndexOffset: 1000 })
           .addTo(map)
-          .bindPopup('You are here')
         accuracyCircle = L.circle(e.latlng, {
           radius,
           color: '#2563EB',
