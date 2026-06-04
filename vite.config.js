@@ -13,9 +13,8 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     VitePWA({
-      // Prompt the user before reloading so we can show a "new version" toast
-      // instead of silently refreshing mid-interaction.
-      registerType: 'prompt',
+      // Silently install new versions and reload in the background — no prompt.
+      registerType: 'autoUpdate',
       injectRegister: 'auto',
       manifest: {
         name: 'Projekt28',

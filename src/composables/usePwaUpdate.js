@@ -1,26 +1,10 @@
-import { watch } from 'vue'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
-import { toast } from 'vue-sonner'
 
 /**
- * Watches the service worker for a freshly built version of the app and shows a
- * persistent Sonner toast inviting the user to reload into the new version.
+ * Registers the service worker. With `registerType: 'autoUpdate'` the plugin
+ * silently installs new versions and reloads the app in the background, so no
+ * user prompt is needed.
  */
 export function usePwaUpdate() {
-  const { needRefresh, updateServiceWorker } = useRegisterSW()
-
-  watch(needRefresh, (available) => {
-    if (!available) return
-
-    toast('A new version is available', {
-      description: 'Reload to get the latest update.',
-      duration: Infinity,
-      action: {
-        label: 'Reload',
-        onClick: () => updateServiceWorker(true),
-      },
-    })
-  })
-
-  return { needRefresh, updateServiceWorker }
+  useRegisterSW({ immediate: true })
 }

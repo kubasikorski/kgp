@@ -1,11 +1,11 @@
 <script setup>
-import { computed, ref, useTemplateRef } from 'vue'
+import { computed, ref } from 'vue'
 import SideBarPeakDetails from './SideBarPeakDetails.vue'
 import PeakList from './PeakList.vue'
 import LoginDrawer from './LoginDrawer.vue'
 import RegisterDrawer from './RegisterDrawer.vue'
-import { usePeaksStore } from '@/stores/peaks'
 import { useAuthStore } from '@/stores/auth'
+import { useSyncStatus } from '@/composables/useUserDataSync'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,9 +23,8 @@ const props = defineProps({
 })
 defineEmits(['select', 'close', 'update:filter'])
 
-const store = usePeaksStore()
 const auth = useAuthStore()
-const fileInput = useTemplateRef('fileInput')
+const { saving } = useSyncStatus()
 const authView = ref(null) // null | 'login' | 'register'
 
 const setAuthView = (view) => {
@@ -37,47 +36,6 @@ const onAuthOpenChange = (isOpen) => {
 
 const conqueredCount = computed(() => props.allPeaks.filter((p) => p.conquered).length)
 const totalCount = computed(() => props.allPeaks.length)
-
-const onExport = () => {
-  const data = store.exportData()
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  const stamp = new Date().toISOString().slice(0, 10)
-  a.href = url
-  a.download = `kgp-${stamp}.json`
-  document.body.appendChild(a)
-  a.click()
-  a.remove()
-  URL.revokeObjectURL(url)
-}
-
-const triggerImport = () => {
-  fileInput.value?.click()
-}
-
-const onImportFile = async (event) => {
-  const input = event.target
-  const file = input.files?.[0]
-  if (!file) return
-  try {
-    const text = await file.text()
-    const data = JSON.parse(text)
-    if (
-      !window.confirm(
-        'Import nadpisze dane na tym urządzeniu (zdobyte i zaplanowane szczyty). Kontynuować?',
-      )
-    ) {
-      input.value = ''
-      return
-    }
-    store.importData(data)
-  } catch (err) {
-    window.alert(`Nie udało się zaimportować pliku: ${err.message ?? err}`)
-  } finally {
-    input.value = ''
-  }
-}
 </script>
 
 <template>
@@ -92,7 +50,29 @@ const onImportFile = async (event) => {
           {{ totalCount }}
         </p>
       </div>
-      <div class="flex gap-1">
+      <div class="flex items-center gap-1">
+        <span
+          v-if="saving"
+          class="p-1.5 text-emerald-600"
+          title="Zapisywanie…"
+          aria-live="polite"
+          aria-label="Zapisywanie"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4 animate-pulse"
+          >
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+            <polyline points="17 21 17 13 7 13 7 21" />
+            <polyline points="7 3 7 8 15 8" />
+          </svg>
+        </span>
         <button
           v-if="!auth.isLoggedIn"
           type="button"
@@ -161,13 +141,6 @@ const onImportFile = async (event) => {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <input
-          ref="fileInput"
-          type="file"
-          accept="application/json"
-          class="hidden"
-          @change="onImportFile"
-        />
       </div>
     </header>
 

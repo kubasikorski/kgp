@@ -1,10 +1,18 @@
-import { nextTick, watch } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 import { supabase } from '@/utils/supabase'
 import { useAuthStore } from '@/stores/auth'
 import { usePeaksStore } from '@/stores/peaks'
 
 const TABLE = 'user_data'
 const PUSH_DEBOUNCE_MS = 800
+
+// Shared across the app: true while a save (upsert) to Supabase is in flight.
+const saving = ref(false)
+
+/** Read-only access to the sync status from any component. */
+export function useSyncStatus() {
+  return { saving }
+}
 
 /**
  * Keeps the peaks store (conquered / planned) in sync with the user's row in
@@ -25,15 +33,20 @@ export function useUserDataSync() {
 
   const push = async () => {
     if (!auth.isLoggedIn) return
-    const { error } = await supabase.from(TABLE).upsert(
-      {
-        user_uid: auth.user.id,
-        conquered: peaks.conqueredAt,
-        planned: peaks.planned,
-      },
-      { onConflict: 'user_uid' },
-    )
-    if (error) console.error('[user-data-sync] push failed:', error.message)
+    saving.value = true
+    try {
+      const { error } = await supabase.from(TABLE).upsert(
+        {
+          user_uid: auth.user.id,
+          conquered: peaks.conqueredAt,
+          planned: peaks.planned,
+        },
+        { onConflict: 'user_uid' },
+      )
+      if (error) console.error('[user-data-sync] push failed:', error.message)
+    } finally {
+      saving.value = false
+    }
   }
 
   const schedulePush = () => {
