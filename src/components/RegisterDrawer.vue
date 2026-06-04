@@ -11,11 +11,16 @@ const open = defineModel('open', { type: Boolean, default: false })
 const emit = defineEmits(['switch'])
 
 const auth = useAuthStore()
-const { email, password, loading, errorMsg, reset, submit } = useAuthForm(auth.signInWithPassword)
+const { email, password, loading, errorMsg, infoMsg, reset, submit } = useAuthForm(auth.signUp)
 
 const onSubmit = async () => {
-  const { error } = await submit()
-  if (!error) open.value = false
+  const { error, needsConfirmation } = await submit()
+  if (error) return
+  if (needsConfirmation) {
+    infoMsg.value = 'Sprawdź skrzynkę e-mail, aby potwierdzić konto.'
+  } else {
+    open.value = false
+  }
 }
 
 watch(open, (isOpen) => {
@@ -24,12 +29,12 @@ watch(open, (isOpen) => {
 </script>
 
 <template>
-  <ResponsiveModal v-model:open="open" title="Zaloguj się">
+  <ResponsiveModal v-model:open="open" title="Utwórz konto">
     <form class="grid gap-4" @submit.prevent="onSubmit">
       <div class="grid gap-2">
-        <Label for="login-email">E-mail</Label>
+        <Label for="register-email">E-mail</Label>
         <Input
-          id="login-email"
+          id="register-email"
           v-model="email"
           type="email"
           autocomplete="email"
@@ -39,31 +44,32 @@ watch(open, (isOpen) => {
       </div>
 
       <div class="grid gap-2">
-        <Label for="login-password">Hasło</Label>
+        <Label for="register-password">Hasło</Label>
         <Input
-          id="login-password"
+          id="register-password"
           v-model="password"
           type="password"
-          autocomplete="current-password"
+          autocomplete="new-password"
           placeholder="••••••••"
           required
         />
       </div>
 
       <p v-if="errorMsg" class="text-destructive text-sm">{{ errorMsg }}</p>
+      <p v-if="infoMsg" class="text-emerald-600 text-sm">{{ infoMsg }}</p>
 
       <Button type="submit" :disabled="loading" class="w-full">
-        {{ loading ? 'Proszę czekać…' : 'Zaloguj się' }}
+        {{ loading ? 'Proszę czekać…' : 'Zarejestruj się' }}
       </Button>
 
       <p class="text-muted-foreground text-center text-sm">
-        Nie masz konta?
+        Masz już konto?
         <button
           type="button"
           class="text-primary font-medium underline-offset-4 hover:underline"
           @click="emit('switch')"
         >
-          Zarejestruj się
+          Zaloguj się
         </button>
       </p>
     </form>

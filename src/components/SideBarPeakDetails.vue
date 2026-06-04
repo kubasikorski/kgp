@@ -1,6 +1,5 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
 import { usePeaksStore } from '@/stores/peaks'
 
 const props = defineProps({
@@ -9,7 +8,12 @@ const props = defineProps({
 defineEmits(['close'])
 
 const store = usePeaksStore()
-const route = useRoute()
+
+const isPlanned = computed(() => store.isPlanned(props.peak.slug))
+
+const togglePlanned = () => {
+  store.togglePlanned(props.peak.slug)
+}
 
 const formattedDate = computed(() => {
   if (!props.peak.conqueredAt) return null
@@ -76,12 +80,25 @@ watch(
       </div>
     </dl>
   </div>
-  <div>
+  <div class="flex gap-2">
     <RouterLink
       :to="{ name: 'peak-details', params: { peak_slug: peak.slug } }"
-      class="block w-full rounded-lg px-3 py-2 text-center text-sm font-medium transition bg-emerald-600 text-white hover:bg-emerald-700"
+      class="flex-1 rounded-lg px-3 py-2 text-center text-sm font-medium transition bg-emerald-600 text-white hover:bg-emerald-700"
     >
       Pokaż szczegóły
     </RouterLink>
+    <button
+      v-if="!peak.conquered"
+      type="button"
+      class="flex-1 rounded-lg px-3 py-2 text-sm font-medium transition ring-1"
+      :class="
+        isPlanned
+          ? 'bg-amber-100 text-amber-800 ring-amber-300 hover:bg-amber-200'
+          : 'bg-white text-amber-700 ring-amber-200 hover:bg-amber-50'
+      "
+      @click="togglePlanned"
+    >
+      {{ isPlanned ? 'Zaplanowane' : 'Zaplanuj' }}
+    </button>
   </div>
 </template>

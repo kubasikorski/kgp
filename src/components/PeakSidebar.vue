@@ -3,6 +3,7 @@ import { computed, ref, useTemplateRef } from 'vue'
 import SideBarPeakDetails from './SideBarPeakDetails.vue'
 import PeakList from './PeakList.vue'
 import LoginDrawer from './LoginDrawer.vue'
+import RegisterDrawer from './RegisterDrawer.vue'
 import { usePeaksStore } from '@/stores/peaks'
 import { useAuthStore } from '@/stores/auth'
 import {
@@ -25,7 +26,14 @@ defineEmits(['select', 'close', 'update:filter'])
 const store = usePeaksStore()
 const auth = useAuthStore()
 const fileInput = useTemplateRef('fileInput')
-const loginOpen = ref(false)
+const authView = ref(null) // null | 'login' | 'register'
+
+const setAuthView = (view) => {
+  authView.value = view
+}
+const onAuthOpenChange = (isOpen) => {
+  if (!isOpen) authView.value = null
+}
 
 const conqueredCount = computed(() => props.allPeaks.filter((p) => p.conquered).length)
 const totalCount = computed(() => props.allPeaks.length)
@@ -86,53 +94,11 @@ const onImportFile = async (event) => {
       </div>
       <div class="flex gap-1">
         <button
-          type="button"
-          class="rounded-md p-1.5 text-slate-500 ring-1 ring-slate-200 transition hover:bg-slate-100 hover:text-slate-900"
-          title="Eksportuj dane"
-          @click="onExport"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-4 w-4"
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          class="rounded-md p-1.5 text-slate-500 ring-1 ring-slate-200 transition hover:bg-slate-100 hover:text-slate-900"
-          title="Importuj dane"
-          @click="triggerImport"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-4 w-4"
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="17 8 12 3 7 8" />
-            <line x1="12" y1="3" x2="12" y2="15" />
-          </svg>
-        </button>
-        <button
           v-if="!auth.isLoggedIn"
           type="button"
           class="rounded-md p-1.5 text-slate-500 ring-1 ring-slate-200 transition hover:bg-slate-100 hover:text-slate-900"
           title="Zaloguj się"
-          @click="loginOpen = true"
+          @click="setAuthView('login')"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +171,16 @@ const onImportFile = async (event) => {
       </div>
     </header>
 
-    <LoginDrawer v-model:open="loginOpen" />
+    <LoginDrawer
+      :open="authView === 'login'"
+      @update:open="onAuthOpenChange"
+      @switch="setAuthView('register')"
+    />
+    <RegisterDrawer
+      :open="authView === 'register'"
+      @update:open="onAuthOpenChange"
+      @switch="setAuthView('login')"
+    />
 
     <SideBarPeakDetails v-if="selected" :peak="selected" @close="$emit('close')" />
 

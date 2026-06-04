@@ -22,6 +22,18 @@ export const useAuthStore = defineStore('auth', () => {
     })
   }
 
+  async function signInWithPassword({ email, password }) {
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    return { error: error?.message ?? null }
+  }
+
+  async function signUp({ email, password }) {
+    const { data, error } = await supabase.auth.signUp({ email, password })
+    if (error) return { error: error.message }
+    // With email confirmation enabled, no session is returned until the user confirms.
+    return { error: null, needsConfirmation: !data.session }
+  }
+
   async function signOut() {
     const { error } = await supabase.auth.signOut()
     // onAuthStateChange clears the session too, but do it eagerly for responsiveness.
@@ -29,5 +41,5 @@ export const useAuthStore = defineStore('auth', () => {
     return error
   }
 
-  return { session, user, isLoggedIn, init, signOut }
+  return { session, user, isLoggedIn, init, signInWithPassword, signUp, signOut }
 })
