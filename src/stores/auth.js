@@ -34,6 +34,13 @@ export const useAuthStore = defineStore('auth', () => {
     return { error: null, needsConfirmation: !data.session }
   }
 
+  async function resetPasswordForEmail({ email }) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    })
+    return { error: error?.message ?? null }
+  }
+
   async function signOut() {
     const { error } = await supabase.auth.signOut()
     // onAuthStateChange clears the session too, but do it eagerly for responsiveness.
@@ -41,5 +48,14 @@ export const useAuthStore = defineStore('auth', () => {
     return error
   }
 
-  return { session, user, isLoggedIn, init, signInWithPassword, signUp, signOut }
+  return {
+    session,
+    user,
+    isLoggedIn,
+    init,
+    signInWithPassword,
+    signUp,
+    resetPasswordForEmail,
+    signOut,
+  }
 })

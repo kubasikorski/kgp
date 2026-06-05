@@ -4,6 +4,7 @@ import SideBarPeakDetails from './SideBarPeakDetails.vue'
 import PeakList from './PeakList.vue'
 import LoginDrawer from './LoginDrawer.vue'
 import RegisterDrawer from './RegisterDrawer.vue'
+import ForgotPasswordDrawer from './ForgotPasswordDrawer.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useSyncStatus } from '@/composables/useUserDataSync'
 import {
@@ -25,7 +26,7 @@ defineEmits(['select', 'close', 'update:filter'])
 
 const auth = useAuthStore()
 const { saving } = useSyncStatus()
-const authView = ref(null) // null | 'login' | 'register'
+const authView = ref(null) // null | 'login' | 'register' | 'forgot'
 
 const setAuthView = (view) => {
   authView.value = view
@@ -117,8 +118,8 @@ const totalCount = computed(() => props.allPeaks.length)
               </svg>
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel class="max-w-48 truncate">
+          <DropdownMenuContent align="end" class="w-auto">
+            <DropdownMenuLabel class="whitespace-nowrap">
               {{ auth.user?.email ?? 'Moje konto' }}
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
@@ -148,9 +149,15 @@ const totalCount = computed(() => props.allPeaks.length)
       :open="authView === 'login'"
       @update:open="onAuthOpenChange"
       @switch="setAuthView('register')"
+      @forgot="setAuthView('forgot')"
     />
     <RegisterDrawer
       :open="authView === 'register'"
+      @update:open="onAuthOpenChange"
+      @switch="setAuthView('login')"
+    />
+    <ForgotPasswordDrawer
+      :open="authView === 'forgot'"
       @update:open="onAuthOpenChange"
       @switch="setAuthView('login')"
     />

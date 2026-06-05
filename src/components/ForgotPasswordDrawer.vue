@@ -8,14 +8,16 @@ import { useAuthStore } from '@/stores/auth'
 import { useAuthForm } from '@/composables/useAuthForm'
 
 const open = defineModel('open', { type: Boolean, default: false })
-const emit = defineEmits(['switch', 'forgot'])
+const emit = defineEmits(['switch'])
 
 const auth = useAuthStore()
-const { email, password, loading, errorMsg, reset, submit } = useAuthForm(auth.signInWithPassword)
+const { email, loading, errorMsg, infoMsg, reset, submit } = useAuthForm(auth.resetPasswordForEmail)
 
 const onSubmit = async () => {
   const { error } = await submit()
-  if (!error) open.value = false
+  if (error) return
+  // Don't reveal whether the address has an account.
+  infoMsg.value = 'Jeśli konto istnieje, wysłaliśmy link do zresetowania hasła na podany adres.'
 }
 
 watch(open, (isOpen) => {
@@ -24,12 +26,12 @@ watch(open, (isOpen) => {
 </script>
 
 <template>
-  <ResponsiveModal v-model:open="open" title="Zaloguj się">
+  <ResponsiveModal v-model:open="open" title="Resetuj hasło">
     <form class="grid gap-4" @submit.prevent="onSubmit">
       <div class="grid gap-2">
-        <Label for="login-email">E-mail</Label>
+        <Label for="forgot-email">E-mail</Label>
         <Input
-          id="login-email"
+          id="forgot-email"
           v-model="email"
           type="email"
           autocomplete="email"
@@ -38,42 +40,21 @@ watch(open, (isOpen) => {
         />
       </div>
 
-      <div class="grid gap-2">
-        <Label for="login-password">Hasło</Label>
-        <Input
-          id="login-password"
-          v-model="password"
-          type="password"
-          autocomplete="current-password"
-          placeholder="••••••••"
-          required
-        />
-      </div>
-
       <p v-if="errorMsg" class="text-destructive text-sm">{{ errorMsg }}</p>
+      <p v-if="infoMsg" class="text-emerald-600 text-sm">{{ infoMsg }}</p>
 
       <Button type="submit" :disabled="loading" class="w-full">
-        {{ loading ? 'Proszę czekać…' : 'Zaloguj się' }}
+        {{ loading ? 'Proszę czekać…' : 'Wyślij link resetujący' }}
       </Button>
 
       <p class="text-muted-foreground text-center text-sm">
-        Nie masz konta?
+        Pamiętasz hasło?
         <button
           type="button"
           class="text-primary font-medium underline-offset-4 hover:underline"
           @click="emit('switch')"
         >
-          Zarejestruj się
-        </button>
-      </p>
-
-      <p class="text-center text-sm">
-        <button
-          type="button"
-          class="text-muted-foreground underline-offset-4 hover:underline"
-          @click="emit('forgot')"
-        >
-          Nie pamiętasz hasła?
+          Zaloguj się
         </button>
       </p>
     </form>
